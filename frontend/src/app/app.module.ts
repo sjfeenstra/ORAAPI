@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { OrderOverviewComponent } from './order-overview/order-overview.component';
 import { LogoutComponent } from './logout/logout.component';
+import { BatchOverviewComponent } from './batch-overview/batch-overview.component';
+import { RolOverviewComponent } from './rol-overview/rol-overview.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { LogoutComponent } from './logout/logout.component';
     HeaderComponent,
     LoginComponent,
     OrderOverviewComponent,
-    LogoutComponent
+    LogoutComponent,
+    BatchOverviewComponent,
+    RolOverviewComponent
   ],
   imports: [
     BrowserModule,
