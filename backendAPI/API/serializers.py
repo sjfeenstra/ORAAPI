@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from API.models import Person, Company, Order, OrderRow
+from API.models import Person, Company, Order, Batch, Roll
 
 
 class PersonSerializer(serializers.ModelSerializer):
@@ -20,10 +20,16 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = ['order_id', 'company_id', 'person_id']
 
 
-class OrderRowSerializer(serializers.ModelSerializer):
+class BatchSerializer(serializers.ModelSerializer):
     class Meta:
-        model = OrderRow
-        fields = ['row_id', 'order_id', 'medication_name', 'medication_packager', 'tray_filler', 'tray_checker',
+        model = Batch
+        fields = ['batch_id', 'order_id']
+
+
+class RollSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Roll
+        fields = ['roll_id', 'batch_id', 'medication_name', 'medication_packager', 'tray_filler', 'tray_checker',
                   'tray_checker_comment', 'photon_operator', 'photo_checker', 'disapproved_photos',
                   'corrections_employee', 'executed_corrections', 'corrections_checker', 'checked_in_GIS',
                   'final_packager', 'final_packaging_description', 'final_checker', 'released']

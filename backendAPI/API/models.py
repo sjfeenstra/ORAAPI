@@ -20,31 +20,36 @@ class Order(models.Model):
     person_id = models.ForeignKey(Person, on_delete=models.RESTRICT)
 
 
-class OrderRow(models.Model):
-    row_id = models.IntegerField(primary_key=True)
+class Batch(models.Model):
+    batch_id = models.IntegerField(primary_key=True)
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+
+
+class Roll(models.Model):
+    roll_id = models.IntegerField(primary_key=True)
+    batch_id = models.ForeignKey(Batch, on_delete=models.CASCADE)
     medication_name = models.CharField(max_length=40)
     # This field is filled by the ID of the MO in question
     medication_packager = models.IntegerField()
     # This field is filled by the ID of the MO in question
-    tray_filler = models.IntegerField
+    tray_filler = models.IntegerField()
     # This field is filled by the ID of the MO in question
-    tray_checker = models.IntegerField
+    tray_checker = models.IntegerField()
     tray_checker_comment = models.CharField(max_length=1000)
     # This field is filled by the ID of the MO in question
-    photon_operator = models.IntegerField
+    photon_operator = models.IntegerField()
     # This field is filled by the ID of the MO in question
-    photo_checker = models.IntegerField
+    photo_checker = models.IntegerField()
     disapproved_photos = models.CharField(max_length=500)
     # This field is filled by the ID of the MO in question
-    corrections_employee = models.IntegerField
+    corrections_employee = models.IntegerField()
     executed_corrections = models.CharField(max_length=1000)
     # This field is filled by the ID of the MO in question
-    corrections_checker = models.IntegerField
-    checked_in_GIS = models.BooleanField
+    corrections_checker = models.IntegerField()
+    checked_in_GIS = models.BooleanField()
     # This field is filled by the ID of the MO in question
-    final_packager = models.IntegerField
+    final_packager = models.IntegerField()
     final_packaging_description = models.CharField(max_length=500)
     # This field is filled by the ID of the MO in question
-    final_checker = models.IntegerField
-    released = models.BooleanField
+    final_checker = models.IntegerField()
+    released = models.BooleanField()
