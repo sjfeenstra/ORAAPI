@@ -4,15 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
-import { OrderOverviewComponent } from './order-overview/order-overview.component';
-import { LogoutComponent } from './logout/logout.component';
-import { BatchOverviewComponent } from './batch-overview/batch-overview.component';
-import { RolOverviewComponent } from './rol-overview/rol-overview.component';
-import { RolDataComponent } from './rol-data/rol-data.component';
-import { ControleLoggenComponent } from './controle-loggen/controle-loggen.component';
+import { LoginComponent } from './user/login/login.component';
+import { LogoutComponent } from './user/logout/logout.component';
+import { OrderOverviewComponent } from './overviews/order-overview/order-overview.component';
+import { BatchOverviewComponent } from './overviews/batch-overview/batch-overview.component';
+import { RolOverviewComponent } from './overviews/rol-overview/rol-overview.component';
+import { RolDataComponent } from './overviews/rol-data/rol-data.component';
+import { ControleLoggenComponent } from './controles/controle-loggen/controle-loggen.component';
 import { HomeComponent } from './home/home.component';
-import { VrijgifteComponent } from './vrijgifte/vrijgifte.component';
+import { VrijgifteComponent } from './controles/vrijgifte/vrijgifte.component';
 
 @NgModule({
   declarations: [
