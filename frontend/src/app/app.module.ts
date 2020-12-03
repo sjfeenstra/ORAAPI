@@ -9,6 +9,10 @@ import { OrderOverviewComponent } from './order-overview/order-overview.componen
 import { LogoutComponent } from './logout/logout.component';
 import { BatchOverviewComponent } from './batch-overview/batch-overview.component';
 import { RolOverviewComponent } from './rol-overview/rol-overview.component';
+import { RolDataComponent } from './rol-data/rol-data.component';
+import { ControleLoggenComponent } from './controle-loggen/controle-loggen.component';
+import { HomeComponent } from './home/home.component';
+import { VrijgifteComponent } from './vrijgifte/vrijgifte.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { RolOverviewComponent } from './rol-overview/rol-overview.component';
     OrderOverviewComponent,
     LogoutComponent,
     BatchOverviewComponent,
-    RolOverviewComponent
+    RolOverviewComponent,
+    RolDataComponent,
+    ControleLoggenComponent,
+    HomeComponent,
+    VrijgifteComponent,
   ],
   imports: [
     BrowserModule,

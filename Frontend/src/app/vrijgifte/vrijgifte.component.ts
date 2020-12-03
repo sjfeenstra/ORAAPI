@@ -3,11 +3,11 @@ import {Router} from '@angular/router';
 import { Location } from '@angular/common'
 
 @Component({
-  selector: 'app-order-overview',
-  templateUrl: './order-overview.component.html',
-  styleUrls: ['./order-overview.component.css']
+  selector: 'app-vrijgifte',
+  templateUrl: './vrijgifte.component.html',
+  styleUrls: ['./vrijgifte.component.css']
 })
-export class OrderOverviewComponent implements OnInit {
+export class VrijgifteComponent implements OnInit {
 
   constructor(private location: Location) { }
 
@@ -17,4 +17,5 @@ export class OrderOverviewComponent implements OnInit {
   back(): void {
     this.location.back()
   }
+
 }

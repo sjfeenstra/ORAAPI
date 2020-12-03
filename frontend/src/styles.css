@@ -14,3 +14,18 @@
     margin: auto;
     width: 50%;
 }
+
+.form-group{
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+
+.buttonRow{
+    text-align: center;
+}
+
+.btn{
+    margin: 20px;
+}
