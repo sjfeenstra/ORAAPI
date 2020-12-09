@@ -28,15 +28,15 @@ const routes: Routes = [
   component: OrderOverviewComponent
 },
 {
-  path: 'batchOverview',
+  path: 'batchOverview/:orderId',
   component: BatchOverviewComponent
 },
 {
-  path: 'rolOverview',
+  path: 'rolOverview/:batchId',
   component: RolOverviewComponent
 },
 {
-  path: 'rolData',
+  path: 'rolData/:rolId',
   component: RolDataComponent
 },
 {
@@ -47,8 +47,7 @@ const routes: Routes = [
   path: 'vrijgifte',
   component: VrijgifteComponent
 },
-
-{ path: '',   redirectTo: 'login', pathMatch: 'full' }
+{ path: '**',   redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

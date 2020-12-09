@@ -12,13 +12,9 @@
     <div class="Center">
         <h1>Rol Gegevens</h1>
     </div>
-    <div class="custom-control custom-switch float-right">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1" (change)="change()" >
-        <label class="custom-control-label" for="customSwitch1">{{medewerker}}</label>
-    </div>
 
-    <div class="list-group">
-        <h3>MediRol 24-03-50</h3>
+    <div *ngIf="rol" class="list-group">
+        <h3>MediRol {{rol.rolId}}</h3>
         <table class="table">
         <thead>
             <tr>
@@ -100,25 +96,18 @@
             </tr>
             <tr>
                 <td>Controle sealen</td>
-                <td *ngIf="medewerker == 'Apotheker'">Goed Verlopen</td>
-                <td *ngIf="medewerker == 'Apotheker'">Kees Jansen</td>
+                <td >Goed Verlopen</td>
+                <td >Kees Jansen</td>
             </tr>
             <tr>
                 <td>Eindcontrole</td>
-                <td *ngIf="medewerker == 'Apotheker'">Alle controles zijn goed uitgevoerd en de fouten zijn goed opgelost.</td>
-                <td *ngIf="medewerker == 'Apotheker'">Kees Jansen</td>
+                <td >Alle controles zijn goed uitgevoerd en de fouten zijn goed opgelost.</td>
+                <td >Kees Jansen</td>
             </tr>
         </tbody>
         </table>
-        <wbr>
-        <button *ngIf="medewerker == 'Medewerker'" type="button" class="btn btn-primary btn-sm disabled" aria-disabled="true" >Foto's bekijken</button>
     </div>
-    <div *ngIf="medewerker == 'Medewerker'" class="buttonRow">
-        <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar de roloverzicht</button>
-        <button type="button" class="btn btn-primary btn-sm" routerLink="/controleLoggen" >Eindcontrole loggen</button>
-        <button type="button" class="btn btn-primary btn-sm" routerLink="/controleLoggen" >Controle sealen loggen</button>
-    </div>
-    <div *ngIf="medewerker == 'Apotheker'" class="buttonRow">
+    <div class="buttonRow">
         <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar de roloverzicht</button>
         <button type="button" class="btn btn-primary btn-sm disabled" aria-disabled="true" >Foto's bekijken</button>
         <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Opdracht Markeren</button>

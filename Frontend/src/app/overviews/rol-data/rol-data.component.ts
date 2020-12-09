@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common'
+import { batches } from '../batch';
+import { orders } from '../orders';
+import { rols } from '../rol';
 
 @Component({
   selector: 'app-rol-data',
@@ -8,24 +11,22 @@ import { Location } from '@angular/common'
   styleUrls: ['./rol-data.component.css']
 })
 export class RolDataComponent implements OnInit {
-  medewerker: string;
 
-  constructor(private location: Location) {
-    this.medewerker = "Medewerker"
+  rols = rols;
+  rol: { rolId: string; controle1: boolean; controle1Desc: string; controle2: boolean; controle2Desc: string; controle3: boolean; controle3Desc: string; } | undefined;
+
+  constructor(private location: Location, private route: ActivatedRoute) {
    }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.rol = rols.find(e => e.rolId === params.get('rolId'));
+    });
   }
+  
 
   back(): void {
     this.location.back()
   }
 
-  change(): void {
-    if (this.medewerker == "Medewerker"){
-      this.medewerker = "Apotheker"
-    } else {
-      this.medewerker = "Medewerker"
-    }
-  }
 }
