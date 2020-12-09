@@ -12,9 +12,20 @@
     <div class="Center">
         <h1>Controle loggen</h1>
     </div>
-
     <div class="form-group">
       <h3>MediRol 24-03-50</h3>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Selecteer de controle
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Line clearance</a>
+          <a class="dropdown-item" href="#">Opstartcontrole</a>
+          <a class="dropdown-item" href="#">Labelcontrole</a>
+          <a class="dropdown-item" href="#">Perforatiecontrole</a>
+          <a class="dropdown-item" href="#">Sealcontrole</a>
+        </div>
+      </div>
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
       <wbr>
       <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Controle loggen</button>

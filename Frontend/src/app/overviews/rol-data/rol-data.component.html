@@ -25,84 +25,22 @@
         </thead>
         <tbody>
             <tr>
-                <td>Line clearance</td>
-                <td>Goed Verlopen</td>
+                <td *ngIf="rol.controle1"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!rol.controle1"><img src="assets/clear-24px.svg"></td>
+                <td>{{rol.controle1Desc}}</td>
                 <td>Joop Jansen</td>
             </tr>
             <tr>
-                <td>Opstartcontrole</td>
-                <td>Goed Verlopen</td>
+                <td *ngIf="rol.controle2"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!rol.controle2"><img src="assets/clear-24px.svg"></td>
+                <td>{{rol.controle2Desc}}</td>
                 <td>Jan de Boer</td>
             </tr>
             <tr>
-                <td>Labelcontrole</td>
-                <td>Label was verkeerd</td>
+                <td *ngIf="rol.controle3"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!rol.controle3"><img src="assets/clear-24px.svg"></td>
+                <td>{{rol.controle3Desc}}</td>
                 <td>Fred de Jong</td>
-            </tr>
-            <tr>
-                <td>Perforatiecontrole</td>
-                <td>Goed Verlopen</td>
-                <td>Joop Jansen</td>
-            </tr>
-            <tr>
-                <td>Sealcontrole</td>
-                <td>Goed Verlopen</td>
-                <td>Jan de Boer</td>
-            </tr>
-            <tr>
-                <td>Scheurcontrole</td>
-                <td>Goed Verlopen</td>
-                <td>Fred de Jong</td>
-            </tr>
-            <tr>
-                <td>Trayvullen</td>
-                <td>Goed Verlopen</td>
-                <td>Joop Jansen</td>
-            </tr>
-            <tr>
-                <td>Schouwen</td>
-                <td>Goed Verlopen</td>
-                <td>Jan de Boer</td>
-            </tr>
-            <tr>
-                <td>Keuren</td>
-                <td>Er zaten verkeerde medicijnen in het zakje</td>
-                <td>Fred de Jong</td>
-            </tr>
-            <tr>
-                <td>Batch validator</td>
-                <td>Goed Verlopen</td>
-                <td>Joop Jansen</td>
-            </tr>
-            <tr>
-                <td>Corrigeren</td>
-                <td>Goed Verlopen</td>
-                <td>Jan de Boer</td>
-            </tr>
-            <tr>
-                <td>Controle correctie</td>
-                <td>Goed Verlopen</td>
-                <td>Fred de Jong</td>
-            </tr>
-            <tr>
-                <td>Cargo Office</td>
-                <td>Goed Verlopen</td>
-                <td>Joop Jansen</td>
-            </tr>
-            <tr>
-                <td>Inpakken/ Inpakservice</td>
-                <td>Goed Verlopen</td>
-                <td>Jan de Boer</td>
-            </tr>
-            <tr>
-                <td>Controle sealen</td>
-                <td >Goed Verlopen</td>
-                <td >Kees Jansen</td>
-            </tr>
-            <tr>
-                <td>Eindcontrole</td>
-                <td >Alle controles zijn goed uitgevoerd en de fouten zijn goed opgelost.</td>
-                <td >Kees Jansen</td>
             </tr>
         </tbody>
         </table>

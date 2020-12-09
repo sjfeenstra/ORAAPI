@@ -13,8 +13,39 @@
         <h1>Batch gegevens</h1>
     </div>
 
-    <div *ngIf="batch" class="Center">
+    <div *ngIf="batch" class="list-group">
       <h3>Batch {{batch.batchId}}</h3>
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Controle</th>
+                <th scope="col">Toelichting</th>
+                <th scope="col">Medewerker</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td *ngIf="batch.controle1"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!batch.controle1"><img src="assets/clear-24px.svg"></td>
+                <td>{{batch.controle1Desc}}</td>
+                <td>Joop Jansen</td>
+            </tr>
+            <tr>
+                <td *ngIf="batch.controle2"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!batch.controle2"><img src="assets/clear-24px.svg"></td>
+                <td>{{batch.controle2Desc}}</td>
+                <td>Jan de Boer</td>
+            </tr>
+            <tr>
+                <td *ngIf="batch.controle3"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!batch.controle3"><img src="assets/clear-24px.svg"></td>
+                <td>{{batch.controle3Desc}}</td>
+                <td>Fred de Jong</td>
+            </tr>
+        </tbody>
+        </table>
+
+        <h3>Aanwezige rollen</h3>
     </div>
     <div *ngFor="let rol of rols; index as rolId" class="list-group">
       <a [routerLink]="['/rolData/', rol.rolId]" class="list-group-item list-group-item-action">Rol {{rol.rolId}}</a>

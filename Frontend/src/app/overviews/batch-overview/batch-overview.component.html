@@ -13,8 +13,39 @@
         <h1>Opdracht gegevens</h1>
     </div>
 
-    <div *ngIf="order" class="Center">
+    <div *ngIf="order" class="list-group">
       <h3>Opdracht {{order.orderId}}</h3>
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Controle</th>
+                <th scope="col">Toelichting</th>
+                <th scope="col">Medewerker</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td *ngIf="order.controle1"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!order.controle1"><img src="assets/clear-24px.svg"></td>
+                <td>{{order.controle1Desc}}</td>
+                <td>Joop Jansen</td>
+            </tr>
+            <tr>
+                <td *ngIf="order.controle2"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!order.controle2"><img src="assets/clear-24px.svg"></td>
+                <td>{{order.controle2Desc}}</td>
+                <td>Jan de Boer</td>
+            </tr>
+            <tr>
+                <td *ngIf="order.controle3"><img src="assets/done_outline-24px.svg"></td>
+                <td *ngIf="!order.controle3"><img src="assets/clear-24px.svg"></td>
+                <td>{{order.controle3Desc}}</td>
+                <td>Fred de Jong</td>
+            </tr>
+        </tbody>
+        </table>
+
+        <h4>Aanwezige batches</h4>
     </div>
     <div *ngFor="let batch of batches; index as batchId" class="list-group">
       <a [routerLink]="['/rolOverview/', batch.batchId]" class="list-group-item list-group-item-action">Batch {{batch.batchId}}</a>
