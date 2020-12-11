@@ -1,10 +1,13 @@
-<div class="Center">
-    <h1>Opdrachten</h1>
-</div>
-<div class="Center">
-  <h3>Opdrachtenoverzicht</h3>
-</div>
-<div *ngFor="let order of orders; index as orderId" class="list-group">
-    <a [routerLink]="['/batchOverview/', order.orderId]" class="list-group-item list-group-item-action">Opdracht {{order.orderId}}</a>
-</div>
-<button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar home</button>
+<section class="py-5 text-center container">
+  <div class="row py-lg-5 justify-content-center">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1>Opdrachten</h1>
+      <h3>Opdrachtenoverzicht</h3>
+      <div *ngFor="let order of orders; index as orderId" class="list-group">
+          <a [routerLink]="['/batchOverview/', order.orderId]" class="list-group-item list-group-item-action">Opdracht {{order.orderId}}</a>
+      </div>
+      <br>
+      <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar home</button>
+    </div>
+  </div>
+</section>

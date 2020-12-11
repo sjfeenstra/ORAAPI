@@ -1,41 +1,49 @@
-<div class="Center">
-    <h1>Rol Gegevens</h1>
-</div>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5 justify-content-center">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1>Rol Gegevens</h1>
 
-<div *ngIf="rol" class="list-group">
-    <h3>MediRol {{rol.rolId}}</h3>
-    <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Controle</th>
-            <th scope="col">Toelichting</th>
-            <th scope="col">Medewerker</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td *ngIf="rol.controle1"><img src="assets/done_outline-24px.svg"></td>
-            <td *ngIf="!rol.controle1"><img src="assets/clear-24px.svg"></td>
-            <td>{{rol.controle1Desc}}</td>
-            <td>Joop Jansen</td>
-        </tr>
-        <tr>
-            <td *ngIf="rol.controle2"><img src="assets/done_outline-24px.svg"></td>
-            <td *ngIf="!rol.controle2"><img src="assets/clear-24px.svg"></td>
-            <td>{{rol.controle2Desc}}</td>
-            <td>Jan de Boer</td>
-        </tr>
-        <tr>
-            <td *ngIf="rol.controle3"><img src="assets/done_outline-24px.svg"></td>
-            <td *ngIf="!rol.controle3"><img src="assets/clear-24px.svg"></td>
-            <td>{{rol.controle3Desc}}</td>
-            <td>Fred de Jong</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-<div class="buttonRow">
-    <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar de roloverzicht</button>
-    <button type="button" class="btn btn-primary btn-sm disabled" aria-disabled="true" >Foto's bekijken</button>
-    <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Opdracht Markeren</button>
-</div>
+            <div *ngIf="rol" class="list-group">
+                <h3>MediRol {{rol.rolId}}</h3>
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Controle</th>
+                        <th scope= "col">succesvol uitgevoerd</th>
+                        <th scope="col">Toelichting</th>
+                        <th scope="col">Medewerker</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Controle7</td>
+                        <td *ngIf="rol.controle1"><img src="assets/done_outline-24px.svg"></td>
+                        <td *ngIf="!rol.controle1"><img src="assets/clear-24px.svg"></td>
+                        <td>{{rol.controle1Desc}}</td>
+                        <td>Joop Jansen</td>
+                    </tr>
+                    <tr>
+                        <td>Controle8</td>
+                        <td *ngIf="rol.controle2"><img src="assets/done_outline-24px.svg"></td>
+                        <td *ngIf="!rol.controle2"><img src="assets/clear-24px.svg"></td>
+                        <td>{{rol.controle2Desc}}</td>
+                        <td>Jan de Boer</td>
+                    </tr>
+                    <tr>
+                        <td>Controle9</td>
+                        <td *ngIf="rol.controle3"><img src="assets/done_outline-24px.svg"></td>
+                        <td *ngIf="!rol.controle3"><img src="assets/clear-24px.svg"></td>
+                        <td>{{rol.controle3Desc}}</td>
+                        <td>Fred de Jong</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar de roloverzicht</button>
+            <button type="button" class="btn btn-primary btn-sm disabled" aria-disabled="true" >Foto's bekijken</button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Opdracht Markeren</button>
+        </div>
+    </div>
+</section>
+    

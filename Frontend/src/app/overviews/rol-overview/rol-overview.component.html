@@ -1,42 +1,50 @@
-  <div class="Center">
-      <h1>Batch gegevens</h1>
-  </div>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5 justify-content-center">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1>Batch gegevens</h1>
 
-  <div *ngIf="batch" class="list-group">
-    <h3>Batch {{batch.batchId}}</h3>
-    <table class="table">
-      <thead>
-          <tr>
-              <th scope="col">Controle</th>
-              <th scope="col">Toelichting</th>
-              <th scope="col">Medewerker</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td *ngIf="batch.controle1"><img src="assets/done_outline-24px.svg"></td>
-              <td *ngIf="!batch.controle1"><img src="assets/clear-24px.svg"></td>
-              <td>{{batch.controle1Desc}}</td>
-              <td>Joop Jansen</td>
-          </tr>
-          <tr>
-              <td *ngIf="batch.controle2"><img src="assets/done_outline-24px.svg"></td>
-              <td *ngIf="!batch.controle2"><img src="assets/clear-24px.svg"></td>
-              <td>{{batch.controle2Desc}}</td>
-              <td>Jan de Boer</td>
-          </tr>
-          <tr>
-              <td *ngIf="batch.controle3"><img src="assets/done_outline-24px.svg"></td>
-              <td *ngIf="!batch.controle3"><img src="assets/clear-24px.svg"></td>
-              <td>{{batch.controle3Desc}}</td>
-              <td>Fred de Jong</td>
-          </tr>
-      </tbody>
-      </table>
-
-      <h3>Aanwezige rollen</h3>
-  </div>
-  <div *ngFor="let rol of rols; index as rolId" class="list-group">
-    <a [routerLink]="['/rolData/', rol.rolId]" class="list-group-item list-group-item-action">Rol {{rol.rolId}}</a>
-</div>
-  <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar de batch</button>
+            <div *ngIf="batch" class="list-group">
+                <h3>Batch {{batch.batchId}}</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Controle</th>
+                            <th scope= "col">succesvol uitgevoerd</th>
+                            <th scope="col">Toelichting</th>
+                            <th scope="col">Medewerker</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Controle4</td>
+                            <td *ngIf="batch.controle1"><img src="assets/done_outline-24px.svg"></td>
+                            <td *ngIf="!batch.controle1"><img src="assets/clear-24px.svg"></td>
+                            <td>{{batch.controle1Desc}}</td>
+                            <td>Joop Jansen</td>
+                        </tr>
+                        <tr>
+                            <td>Controle5</td>
+                            <td *ngIf="batch.controle2"><img src="assets/done_outline-24px.svg"></td>
+                            <td *ngIf="!batch.controle2"><img src="assets/clear-24px.svg"></td>
+                            <td>{{batch.controle2Desc}}</td>
+                            <td>Jan de Boer</td>
+                        </tr>
+                        <tr>
+                            <td>Controle6</td>
+                            <td *ngIf="batch.controle3"><img src="assets/done_outline-24px.svg"></td>
+                            <td *ngIf="!batch.controle3"><img src="assets/clear-24px.svg"></td>
+                            <td>{{batch.controle3Desc}}</td>
+                            <td>Fred de Jong</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Aanwezige rollen</h3>
+            <div *ngFor="let rol of rols; index as rolId" class="list-group">
+                <a [routerLink]="['/rolData/', rol.rolId]" class="list-group-item list-group-item-action">Rol {{rol.rolId}}</a>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar de Opdracht</button>
+        </div>
+    </div>
+</section>

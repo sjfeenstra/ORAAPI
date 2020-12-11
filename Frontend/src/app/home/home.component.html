@@ -1,23 +1,23 @@
+<section class="py-5 text-center container">
+  <div class="row py-lg-5 justify-content-center">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1>Home</h1>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" (change)="change()">
+        <label class="form-check-label" for="flexSwitchCheckDefault">{{medewerker}}</label>
+      </div>
+      <h3>Welkom {{medewerker}}</h3>
+      <wbr>
+      <wbr>
+      <div *ngIf="medewerker == 'Medewerker'"class="form-group">
+        <button type="button" class="btn btn-primary my-2" routerLink="/controleLoggen" >Scan een barcode om een controle te loggen</button>
+      </div>
 
-<div class="Center">
-    <h1>Home</h1>
-</div>
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" (change)="change()">
-  <label class="form-check-label" for="flexSwitchCheckDefault">{{medewerker}}</label>
-</div>
-<div *ngIf="medewerker == 'Medewerker'"class="form-group">
-  <h3>Welkom {{medewerker}}</h3>
-  <wbr>
-  <wbr>
-  <button type="button" class="btn btn-primary btn-sm" routerLink="/controleLoggen" >Scan een barcode om een controle te loggen</button>
-</div>
-
-<div *ngIf="medewerker == 'Apotheker'"class="form-group">
-  <h3>Welkom {{medewerker}}</h3>
-  <wbr>
-  <wbr>
-  <button type="button" class="btn btn-primary btn-sm" routerLink="/orderOverview" >Openstaande Opdrachten</button>
-  <button type="button" class="btn btn-primary btn-sm" routerLink="/vrijgifte" >Vrijgifte</button>
-  <button type="button" class="btn btn-primary btn-sm" routerLink="/orderOverview" >Opdrachten geschiedenis</button>
-</div>
+      <div *ngIf="medewerker == 'Apotheker'"class="form-group">
+        <button type="button" class="btn btn-primary my-2" routerLink="/orderOverview" >Openstaande Opdrachten</button>
+        <button type="button" class="btn btn-primary my-2" routerLink="/vrijgifte" >Vrijgifte</button>
+        <button type="button" class="btn btn-primary my-2" routerLink="/orderOverview" >Opdrachten geschiedenis</button>
+      </div>
+    </div>
+  </div>
+</section>
