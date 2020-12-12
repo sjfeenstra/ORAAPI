@@ -1,56 +1,26 @@
 export const orders = [
     {
         orderId: '24',
-        controle1: true,
-        controle1Desc: '',
-        controle2: true,
-        controle2Desc: '',
-        controle3: false,
-        controle3Desc: 'Er is iets aangepast',
+        institute: 'Ziekenhuis'
     },
     {
         orderId: '25',
-        controle1: true,
-        controle1Desc: '',
-        controle2: false,
-        controle2Desc: 'Er is iets aangepast',
-        controle3: true,
-        controle3Desc: '',
+        institute: 'Ziekenhuis'
     },
     {
         orderId: '26',
-        controle1: false,
-        controle1Desc: 'Er is iets aangepast',
-        controle2: true,
-        controle2Desc: '',
-        controle3: true,
-        controle3Desc: '',
+        institute: 'Ziekenhuis'
     },
     {
         orderId: '27',
-        controle1: false,
-        controle1Desc: 'Er is iets aangepast',
-        controle2: true,
-        controle2Desc: '',
-        controle3: true,
-        controle3Desc: '',
+        institute: 'Ziekenhuis'
     },
     {
         orderId: '28',
-        controle1: true,
-        controle1Desc: '',
-        controle2: false,
-        controle2Desc: 'Er is iets aangepast',
-        controle3: true,
-        controle3Desc: '',
+        institute: 'Ziekenhuis'
     },
     {
         orderId: '29',
-        controle1: true,
-        controle1Desc: '',
-        controle2: true,
-        controle2Desc: '',
-        controle3: false,
-        controle3Desc: 'Er is iets aangepast',
+        institute: 'Ziekenhuis'
     }
   ];

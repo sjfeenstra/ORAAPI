@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { Location } from '@angular/common'
+import { controles } from '../controles';
+import { batches } from '../batch';
 import { orders } from '../orders';
+import { rols } from '../rol';
 
 @Component({
   selector: 'app-order-overview',

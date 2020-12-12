@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common'
+import { controles } from '../controles';
 import { batches } from '../batch';
 import { orders } from '../orders';
 import { rols } from '../rol';
@@ -13,12 +14,23 @@ import { rols } from '../rol';
 export class RolOverviewComponent implements OnInit {
 
   rols = rols;
-  batch: { batchId: string; controle1: boolean; controle1Desc: string; controle2: boolean; controle2Desc: string; controle3: boolean; controle3Desc: string; } | undefined;
-  constructor(private location: Location, private route: ActivatedRoute) { }
+  batch: any;
+  batches = batches;
+  controles = controles;
+
+  displayedColumns: string[] = ['controle', 'succesvol uitgevoerd', 'toelichting', 'medewerker'];
+
+  constructor(private location: Location, private route: ActivatedRoute) {
+   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.batch = batches.find(e => e.batchId === params.get('batchId'));
+      if (this.batches.find(e => e.batchId === params.get('batchId'))){
+      this.batch = this.batches.find(e => e.batchId === params.get('batchId'));
+      // Hiervoor is een datamodel nodig om de juiste rollen bij batches te linken.
+      this.rols = rols.filter(row => row.rolId.includes(this.batch.batchId));
+      this.controles = controles.filter(row => row.id === this.batch.batchId);
+      }
     });
   }
 

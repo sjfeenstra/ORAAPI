@@ -1,55 +1,34 @@
 <section class="py-5 text-center container">
     <div class="row py-lg-5 justify-content-center">
         <div class="col-lg-6 col-md-8 mx-auto">
-            <h1>Vrijgiffte</h1>
+            <h1>{{title}}</h1>
+            <table mat-table [dataSource]="dataSource" >
+                <ng-container matColumnDef=".">
+                    <th mat-header-cell *matHeaderCellDef> Vrijgeven </th>
+                    <td mat-cell *matCellDef="let element"> <mat-checkbox></mat-checkbox></td>
+                </ng-container>
 
-            <div class="list-group">
-                <h3>Openstaande opdrachten</h3>
-                <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Opdracht</th>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Markering</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="radio"></td>
-                        <td>Opdracht 24</td>
-                        <td>28-11-2020</td>
-                        <td>Goed Gekeurd</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio"></td>
-                        <td>Opdracht 25</td>
-                        <td>28-11-2020</td>
-                        <td>Nog niet volledig goedgekeurd</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio"></td>
-                        <td>Opdracht 26</td>
-                        <td>28-11-2020</td>
-                        <td>Goed Gekeurd</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio"></td>
-                        <td>Opdracht 27</td>
-                        <td>28-11-2020</td>
-                        <td>Afgekeurd</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio"></td>
-                        <td>Opdracht 28</td>
-                        <td>28-11-2020</td>
-                        <td>Goed Gekeurd</td>
-                    </tr>
-                </tbody>
-                </table>
-            </div>
-            <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Terug naar de roloverzicht</button>
-            <button type="button" class="btn btn-primary btn-sm" (click)="back()" >Vrijgeven</button>
+                <ng-container matColumnDef="opdracht">
+                    <th mat-header-cell *matHeaderCellDef> Opdracht </th>
+                    <td mat-cell *matCellDef="let element"> {{element.opdracht}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="datum">
+                    <th mat-header-cell *matHeaderCellDef> Datum </th>
+                    <td mat-cell *matCellDef="let element"> {{element.datum}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="markering">
+                    <th mat-header-cell *matHeaderCellDef> Markering </th>
+                    <td mat-cell *matCellDef="let element"> {{element.markering}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-divider></mat-divider>
+            <button mat-raised-button color="primary" (click)="back()">Terug naar home pagina</button>
+            <button mat-raised-button color="primary" (click)="back()">Vrijgeven</button>
         </div>
     </div>
 </section>

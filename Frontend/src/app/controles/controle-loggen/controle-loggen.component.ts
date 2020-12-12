@@ -8,12 +8,11 @@ import { Location } from '@angular/common'
   styleUrls: ['./controle-loggen.component.css']
 })
 export class ControleLoggenComponent implements OnInit {
-  abstractieLevel: String;
-  controle: String;
+  title = "Controle loggen"
+  abstractieLevel = "";
+  controle = "Controle"
 
   constructor(private location: Location) {
-    this.controle = "Controle"
-    this.abstractieLevel = "Opdracht"
    }
 
   ngOnInit(): void {
@@ -22,13 +21,4 @@ export class ControleLoggenComponent implements OnInit {
   back(): void {
     this.location.back()
   }
-
-  change(abstractie: String){
-    this.abstractieLevel = abstractie
-  }
-
-  changeControl(controle: String){
-    this.controle = controle
-  }
-
 }

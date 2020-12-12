@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common'
+import { controles } from '../controles';
 import { batches } from '../batch';
 import { orders } from '../orders';
 import { rols } from '../rol';
@@ -12,8 +13,10 @@ import { rols } from '../rol';
 })
 export class RolDataComponent implements OnInit {
 
-  rols = rols;
-  rol: { rolId: string; controle1: boolean; controle1Desc: string; controle2: boolean; controle2Desc: string; controle3: boolean; controle3Desc: string; } | undefined;
+  rol: any;
+  controles = controles;
+
+  displayedColumns: string[] = ['controle', 'succesvol uitgevoerd', 'toelichting', 'medewerker'];
 
   constructor(private location: Location, private route: ActivatedRoute) {
    }
@@ -21,6 +24,7 @@ export class RolDataComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.rol = rols.find(e => e.rolId === params.get('rolId'));
+      this.controles = controles.filter(row => row.id === this.rol.rolId);
     });
   }
   
