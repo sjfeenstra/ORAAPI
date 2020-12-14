@@ -16,7 +16,7 @@ export const controles = [
     {
         id: '24',
         controleType: "controle3",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
