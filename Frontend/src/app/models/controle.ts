@@ -1,3 +1,13 @@
+export interface Controle {
+    id: String;
+    controleType: String;
+    controle: Boolean;
+    controleDesc: String;
+    uitgevoerdDoor: String;
+}
+
+
+
 export const controles = [
     {
         id: '24',

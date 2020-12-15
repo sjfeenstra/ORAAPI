@@ -36,12 +36,19 @@
             </div>
             <h4>Aanwezige batches</h4>
             <mat-divider></mat-divider>
-            <mat-nav-list>
-                <mat-list-item  [routerLink]="['/rolOverview/', batch.batchId]" *ngFor="let batch of batches; index as batchId">
+            <mat-list>
+                <mat-list-item *ngFor="let batch of batches; index as batchId">
+                  <mat-divider></mat-divider>
+                  <div (click)="selectBatch(batch)" class="w-100">
+                    <p><a>Batch {{batch.batchId}}</a><a>Aantal bijzondere controles {{checker(batch)}}</a></p>
+                  </div>
+                  <div *ngIf="selectedBatch.batchId == batch.batchId">
                     <mat-divider></mat-divider>
-                    <a>Batch {{batch.batchId}}</a>
+                    <span><a>Aantal zakjes {{batch.zakjesAantal}}</a></span>
+                    <button mat-raised-button color="accent" [routerLink]="['/rolOverview/', batch.batchId]">Meer info</button>
+                  </div>
                 </mat-list-item>
-             </mat-nav-list>
+              </mat-list>
             <button mat-raised-button color="primary" (click)="back()">Terug naar de opdrachtoverzicht</button>
         </div>
     </div>

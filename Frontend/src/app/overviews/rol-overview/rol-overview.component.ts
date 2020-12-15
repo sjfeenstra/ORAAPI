@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common'
-import { controles } from '../controles';
-import { batches } from '../batch';
-import { orders } from '../orders';
-import { rols } from '../rol';
+import { Controle,controles } from '../../models/controle';
+import { Batch,batches } from '../../models/batch';
+import { Order,orders } from '../../models/order';
+import { Rol,rols } from '../../models/rol';
+
 
 @Component({
   selector: 'app-rol-overview',
@@ -17,10 +18,12 @@ export class RolOverviewComponent implements OnInit {
   batch: any;
   batches = batches;
   controles = controles;
+  selectedRol: Rol; 
 
   displayedColumns: string[] = ['controle', 'succesvol uitgevoerd', 'toelichting', 'medewerker'];
 
   constructor(private location: Location, private route: ActivatedRoute) {
+    this.selectedRol = {rolId: '', Patient: ''}
    }
 
   ngOnInit(): void {
@@ -36,6 +39,13 @@ export class RolOverviewComponent implements OnInit {
 
   back(): void {
     this.location.back()
+  }
+
+  checker(rol: Rol): Number {
+    return controles.filter(row => row.id === rol.rolId).filter(row => row.controle === false).length;;
+  }
+  selectRol(rol: Rol):void {
+    this.selectedRol = rol;
   }
   
 }

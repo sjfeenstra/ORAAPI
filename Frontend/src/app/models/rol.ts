@@ -1,3 +1,8 @@
+export interface Rol {
+    rolId: string;
+    Patient: String;
+}
+
 export const rols = [
     {
         rolId: '24-03-50',

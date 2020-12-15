@@ -36,12 +36,19 @@
             </div>
             <h3>Aanwezige rollen</h3>
             <mat-divider></mat-divider>
-            <mat-nav-list>
-                <mat-list-item [routerLink]="['/rolData/', rol.rolId]" *ngFor="let rol of rols; index as rolId">
+            <mat-list>
+                <mat-list-item *ngFor="let rol of rols; index as rolId">
+                  <mat-divider></mat-divider>
+                  <div (click)="selectRol(rol)" class="w-100">
+                    <p><a>Rol {{rol.rolId}}</a><a>Aantal bijzondere controles {{checker(rol)}}</a></p>
+                  </div>
+                  <div *ngIf="selectedRol.rolId == rol.rolId">
                     <mat-divider></mat-divider>
-                    <a>Rol {{rol.rolId}}</a>
+                    <span><a>Patient: {{rol.Patient}}</a></span>
+                    <button mat-raised-button color="accent" [routerLink]="['/rolData/', rol.rolId]">Meer info</button>
+                  </div>
                 </mat-list-item>
-            </mat-nav-list>
+              </mat-list>
             <button mat-raised-button color="primary" (click)="back()">Terug naar de Opdracht</button>
         </div>
     </div>

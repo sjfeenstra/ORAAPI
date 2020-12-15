@@ -1,3 +1,8 @@
+export interface Batch {
+    batchId: string;
+    zakjesAantal: number;
+}
+
 export const batches = [
     {
         batchId: '24-03',
