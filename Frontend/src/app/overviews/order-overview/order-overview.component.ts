@@ -31,6 +31,11 @@ export class OrderOverviewComponent implements OnInit {
     return controles.filter(row => row.id === order.orderId).filter(row => row.controle === false).length;;
   }
   selectOrder(order: Order):void {
-    this.selectedOrder = order;
+    if (order != this.selectedOrder){
+      this.selectedOrder = order;
+    }
+    else {
+      this.selectedOrder = {orderId: '', institute: ''}
+    }
   }
 }

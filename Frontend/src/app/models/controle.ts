@@ -6,8 +6,6 @@ export interface Controle {
     uitgevoerdDoor: String;
 }
 
-
-
 export const controles = [
     {
         id: '24',

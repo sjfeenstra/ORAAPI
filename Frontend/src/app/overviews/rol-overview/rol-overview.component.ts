@@ -45,7 +45,12 @@ export class RolOverviewComponent implements OnInit {
     return controles.filter(row => row.id === rol.rolId).filter(row => row.controle === false).length;;
   }
   selectRol(rol: Rol):void {
-    this.selectedRol = rol;
+    if (rol != this.selectedRol){
+      this.selectedRol = rol;
+    }
+    else {
+      this.selectedRol = {rolId: '', Patient: ''}
+    }
   }
   
 }

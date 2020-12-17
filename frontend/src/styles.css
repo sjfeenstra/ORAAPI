@@ -5,3 +5,8 @@ mat-form-field {
 table {
     width: 100%;
 }
+
+p {
+    display: flex;
+    justify-content: space-between;
+}

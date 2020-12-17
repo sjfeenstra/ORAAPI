@@ -41,6 +41,11 @@ export class BatchOverviewComponent implements OnInit {
     return controles.filter(row => row.id === batch.batchId).filter(row => row.controle === false).length;;
   }
   selectBatch(batch: Batch):void {
-    this.selectedBatch = batch;
+    if (batch != this.selectedBatch){
+      this.selectedBatch = batch;
+    }
+    else {
+      this.selectedBatch = {batchId: '', zakjesAantal: 0};
+    }
   }
 }
