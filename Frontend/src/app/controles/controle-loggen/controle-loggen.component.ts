@@ -9,7 +9,7 @@ import { Location } from '@angular/common'
 })
 export class ControleLoggenComponent implements OnInit {
   title = "Controle loggen"
-  abstractieLevel = "";
+  abstractieLevel = "Opdracht";
   controle = "Controle"
 
   constructor(private location: Location) {

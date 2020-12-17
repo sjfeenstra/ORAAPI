@@ -6,7 +6,6 @@ table {
     width: 100%;
 }
 
-p {
-    display: flex;
-    justify-content: space-between;
+h1, h2, h3, h4 {
+    text-align: center;
 }

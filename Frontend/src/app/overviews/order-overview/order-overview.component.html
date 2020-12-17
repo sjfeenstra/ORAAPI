@@ -1,22 +1,22 @@
 <section class="py-5 container">
   <div class="row py-lg-5 justify-content-center">
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 class="text-center">Opdrachten</h1>
-      <h3 class="text-center">Opdrachtenoverzicht</h3>
+      <h1 >Opdrachten</h1>
+      <h3 >Opdrachtenoverzicht</h3>
       <mat-divider></mat-divider>
-      <mat-list>
-        <mat-list-item *ngFor="let order of orders; index as orderId">
-          <mat-divider></mat-divider>
-          <div (click)="selectOrder(order)" class="w-100">
-            <p><a>Opdracht {{order.orderId}}</a><a>Aantal bijzondere controles {{checker(order)}}</a></p>
-          </div>
-          <div *ngIf="selectedOrder.orderId == order.orderId">
-            <mat-divider></mat-divider>
-            <span><a>institute {{order.institute}}</a></span>
-            <button mat-raised-button color="accent" [routerLink]="['/batchOverview/', order.orderId]">Meer info</button>
-          </div>
-        </mat-list-item>
-      </mat-list>
+      <div *ngFor="let order of orders; index as orderId" [routerLink]="['/batchOverview/', order.orderId]">
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Opdracht {{order.orderId}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Aantal bijzondere controles {{checker(order)}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+      </div>
+      <br>
       <button mat-raised-button color="primary" (click)="back()">Terug naar home</button>
     </div>
   </div>

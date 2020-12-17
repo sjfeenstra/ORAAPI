@@ -10,14 +10,14 @@ export const controles = [
     {
         id: '24',
         controleType: "controle1",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '24',
         controleType: "controle2",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
@@ -31,357 +31,357 @@ export const controles = [
     {
         id: '24-03',
         controleType: "controle4",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '24-03',
         controleType: 'controle5',
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '24-03',
         controleType: "controle6",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '24-03-50',
         controleType: "controle7",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '24-03-50',
         controleType: "controle8",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '24-03-50',
         controleType: "controle9",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '25',
         controleType: "controle1",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '25',
         controleType: "controle2",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '25',
         controleType: "controle3",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '25-03',
         controleType: "controle4",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '25-03',
         controleType: 'controle5',
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '25-03',
         controleType: "controle6",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '25-03-50',
         controleType: "controle7",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '25-03-50',
         controleType: "controle8",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '25-03-50',
         controleType: "controle9",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '26',
         controleType: "controle1",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '26',
         controleType: "controle2",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '26',
         controleType: "controle3",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '26-03',
         controleType: "controle4",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '26-03',
         controleType: 'controle5',
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '26-03',
         controleType: "controle6",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '26-03-50',
         controleType: "controle7",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '26-03-50',
         controleType: "controle8",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '26-03-50',
         controleType: "controle9",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '27',
         controleType: "controle1",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '27',
         controleType: "controle2",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '27',
         controleType: "controle3",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '27-03',
         controleType: "controle4",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '27-03',
         controleType: 'controle5',
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '27-03',
         controleType: "controle6",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '27-03-50',
         controleType: "controle7",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '27-03-50',
         controleType: "controle8",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '27-03-50',
         controleType: "controle9",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '28',
         controleType: "controle1",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '28',
         controleType: "controle2",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '28',
         controleType: "controle3",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '28-03',
         controleType: "controle4",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '28-03',
         controleType: 'controle5',
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '28-03',
         controleType: "controle6",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '28-03-50',
         controleType: "controle7",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '28-03-50',
         controleType: "controle8",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '28-03-50',
         controleType: "controle9",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
-        id: '28',
+        id: '29',
         controleType: "controle1",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '29',
         controleType: "controle2",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '29',
         controleType: "controle3",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '29-03',
         controleType: "controle4",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '29-03',
         controleType: 'controle5',
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '29-03',
         controleType: "controle6",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },
     {
         id: '29-03-50',
         controleType: "controle7",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '29-03-50',
         controleType: "controle8",
-        controle: true,
+        controle: false,
         controleDesc: '',
         uitgevoerdDoor: ''
     },
     {
         id: '29-03-50',
         controleType: "controle9",
-        controle: false,
+        controle: true,
         controleDesc: 'Er is iets aangepast',
         uitgevoerdDoor: ''
     },

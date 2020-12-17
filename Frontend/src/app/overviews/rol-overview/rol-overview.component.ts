@@ -42,7 +42,7 @@ export class RolOverviewComponent implements OnInit {
   }
 
   checker(rol: Rol): Number {
-    return controles.filter(row => row.id === rol.rolId).filter(row => row.controle === false).length;;
+    return controles.filter(row => row.id === rol.rolId).filter(row => row.controle === true).length;;
   }
   selectRol(rol: Rol):void {
     if (rol != this.selectedRol){

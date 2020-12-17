@@ -28,7 +28,7 @@ export class OrderOverviewComponent implements OnInit {
   }
 
   checker(order: Order): Number {
-    return controles.filter(row => row.id === order.orderId).filter(row => row.controle === false).length;;
+    return controles.filter(row => row.id === order.orderId).filter(row => row.controle === true).length;;
   }
   selectOrder(order: Order):void {
     if (order != this.selectedOrder){

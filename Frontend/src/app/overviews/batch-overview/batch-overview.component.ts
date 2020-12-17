@@ -38,7 +38,7 @@ export class BatchOverviewComponent implements OnInit {
   }
 
   checker(batch: Batch): Number {
-    return controles.filter(row => row.id === batch.batchId).filter(row => row.controle === false).length;;
+    return controles.filter(row => row.id === batch.batchId).filter(row => row.controle === true).length;;
   }
   selectBatch(batch: Batch):void {
     if (batch != this.selectedBatch){
