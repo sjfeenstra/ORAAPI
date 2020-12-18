@@ -3,24 +3,22 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   medewerker: string;
 
   constructor() {
-    this.medewerker = "Medewerker"
-   }
-
-  ngOnInit(): void {
+    this.medewerker = 'Medewerker';
   }
+
+  ngOnInit(): void {}
 
   change(): void {
-    if (this.medewerker == "Medewerker"){
-      this.medewerker = "Apotheker"
+    if (this.medewerker == 'Medewerker') {
+      this.medewerker = 'Apotheker';
     } else {
-      this.medewerker = "Medewerker"
+      this.medewerker = 'Medewerker';
     }
   }
-
 }

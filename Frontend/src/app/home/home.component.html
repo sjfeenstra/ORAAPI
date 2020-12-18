@@ -6,11 +6,12 @@
       <h3>Welkom {{medewerker}}</h3>
       <wbr>
       <wbr>
-      <div *ngIf="medewerker == 'Medewerker'"class="form-group">
-        <button mat-raised-button color="primary" routerLink="/controleLoggen">Scan een barcode om een controle te loggen</button>
+      <div *ngIf="medewerker == 'Medewerker'" class="form-group">
+        <button mat-raised-button color="primary" routerLink="/controleLoggen">Scan een barcode om een controle te
+          loggen</button>
       </div>
 
-      <div *ngIf="medewerker == 'Apotheker'"class="form-group">
+      <div *ngIf="medewerker == 'Apotheker'" class="form-group">
         <button mat-raised-button color="primary" routerLink="/orderOverview">Openstaande Opdrachten</button>
         <button mat-raised-button color="primary" routerLink="/vrijgifte">Vrijgifte</button>
         <button mat-raised-button color="primary" routerLink="/orderOverview">Opdrachten geschiedenis</button>

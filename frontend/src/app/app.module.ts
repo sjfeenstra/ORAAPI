@@ -1,5 +1,5 @@
-import { BrowserModule} from '@angular/platform-browser';
-import { CommonModule} from '@angular/common'
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -14,7 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,10 +62,10 @@ import { from } from 'rxjs';
     MatRadioModule,
     MatCheckboxModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
-  exports:[MatInputModule],
+  exports: [MatInputModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

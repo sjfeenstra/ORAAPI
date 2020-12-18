@@ -1,31 +1,30 @@
 <section class="py-5 container">
-    <div class="row py-lg-5 justify-content-center">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1>Rol Gegevens</h1>
+  <div class="row py-lg-5 justify-content-center">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1>Rol Gegevens</h1>
 
-            <div *ngIf="rol">
-                <h3>MediRol {{rol.rolId}}</h3>
-                <div *ngFor="let controle of controles">
-                    <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                            {{controle.controleType}}
-                          </mat-panel-title>
-                          <mat-panel-description>
-                            Bijzonderheid: {{controle.controle}}
-                          </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <p>Beschrijving: {{controle.controleDesc}}</p>
-                        <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
-                      </mat-expansion-panel>
-                </div>
-            </div>
-            <br>
-            <mat-divider></mat-divider>
-            <button mat-raised-button color="primary" (click)="back()">Terug naar de roloverzicht</button>
-            <button mat-raised-button color="primary" disabled>Foto's bekijken</button>
-            <button mat-raised-button color="primary" (click)="back()">Opdracht Markeren</button>
+      <div *ngIf="rol">
+        <h3>MediRol {{rol.rolId}}</h3>
+        <div *ngFor="let controle of controles">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{controle.controleType}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Bijzonderheid: {{controle.controle}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Beschrijving: {{controle.controleDesc}}</p>
+            <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
+          </mat-expansion-panel>
         </div>
+      </div>
+      <br>
+      <mat-divider></mat-divider>
+      <button mat-raised-button color="primary" (click)="back()">Terug naar de roloverzicht</button>
+      <button mat-raised-button color="primary" disabled>Foto's bekijken</button>
+      <button mat-raised-button color="primary" (click)="back()">Opdracht Markeren</button>
     </div>
+  </div>
 </section>
-    

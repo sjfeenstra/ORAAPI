@@ -1,34 +1,36 @@
 <section class="py-5 container">
-    <div class="row py-lg-5 justify-content-center">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1>{{title}}</h1>
-            <table mat-table [dataSource]="dataSource" >
-                <ng-container matColumnDef=".">
-                    <th mat-header-cell *matHeaderCellDef> Vrijgeven </th>
-                    <td mat-cell *matCellDef="let element"> <mat-checkbox></mat-checkbox></td>
-                </ng-container>
+  <div class="row py-lg-5 justify-content-center">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1>{{title}}</h1>
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef=".">
+          <th mat-header-cell *matHeaderCellDef> Vrijgeven </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-checkbox></mat-checkbox>
+          </td>
+        </ng-container>
 
-                <ng-container matColumnDef="opdracht">
-                    <th mat-header-cell *matHeaderCellDef> Opdracht </th>
-                    <td mat-cell *matCellDef="let element"> {{element.opdracht}} </td>
-                </ng-container>
+        <ng-container matColumnDef="opdracht">
+          <th mat-header-cell *matHeaderCellDef> Opdracht </th>
+          <td mat-cell *matCellDef="let element"> {{element.opdracht}} </td>
+        </ng-container>
 
-                <ng-container matColumnDef="datum">
-                    <th mat-header-cell *matHeaderCellDef> Datum </th>
-                    <td mat-cell *matCellDef="let element"> {{element.datum}} </td>
-                </ng-container>
+        <ng-container matColumnDef="datum">
+          <th mat-header-cell *matHeaderCellDef> Datum </th>
+          <td mat-cell *matCellDef="let element"> {{element.datum}} </td>
+        </ng-container>
 
-                <ng-container matColumnDef="markering">
-                    <th mat-header-cell *matHeaderCellDef> Markering </th>
-                    <td mat-cell *matCellDef="let element"> {{element.markering}} </td>
-                </ng-container>
+        <ng-container matColumnDef="markering">
+          <th mat-header-cell *matHeaderCellDef> Markering </th>
+          <td mat-cell *matCellDef="let element"> {{element.markering}} </td>
+        </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <mat-divider></mat-divider>
-            <button mat-raised-button color="primary" (click)="back()">Terug naar home pagina</button>
-            <button mat-raised-button color="primary" (click)="back()">Vrijgeven</button>
-        </div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-divider></mat-divider>
+      <button mat-raised-button color="primary" (click)="back()">Terug naar home pagina</button>
+      <button mat-raised-button color="primary" (click)="back()">Vrijgeven</button>
     </div>
+  </div>
 </section>

@@ -1,42 +1,42 @@
 <section class="py-5 container">
-    <div class="row py-lg-5 justify-content-center">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1>Batch gegevens</h1>
+  <div class="row py-lg-5 justify-content-center">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1>Batch gegevens</h1>
 
-            <div *ngIf="batch">
-                <h3>Batch {{batch.batchId}}</h3>
-                <div *ngFor="let controle of controles">
-                    <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                            {{controle.controleType}}
-                          </mat-panel-title>
-                          <mat-panel-description>
-                            Bijzonderheid: {{controle.controle}}
-                          </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <p>Beschrijving: {{controle.controleDesc}}</p>
-                        <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
-                      </mat-expansion-panel>
-                </div>
-            </div>
-            <br>
-            <h3>Aanwezige rollen</h3>
-            <mat-divider></mat-divider>
-            <div *ngFor="let rol of rols; index as rolId" [routerLink]="['/rolData/', rol.rolId]">
-                <mat-expansion-panel hideToggle>
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        Rol {{rol.rolId}}
-                      </mat-panel-title>
-                      <mat-panel-description>
-                        Aantal bijzondere controles {{checker(rol)}}
-                      </mat-panel-description>
-                    </mat-expansion-panel-header>
-                  </mat-expansion-panel>
-              </div>
-              <br>
-            <button mat-raised-button color="primary" (click)="back()">Terug naar de Opdracht</button>
+      <div *ngIf="batch">
+        <h3>Batch {{batch.batchId}}</h3>
+        <div *ngFor="let controle of controles">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{controle.controleType}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Bijzonderheid: {{controle.controle}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Beschrijving: {{controle.controleDesc}}</p>
+            <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
+          </mat-expansion-panel>
         </div>
+      </div>
+      <br>
+      <h3>Aanwezige rollen</h3>
+      <mat-divider></mat-divider>
+      <div *ngFor="let rol of rols; index as rolId" [routerLink]="['/rolData/', rol.rolId]">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Rol {{rol.rolId}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Aantal bijzondere controles {{checker(rol)}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </div>
+      <br>
+      <button mat-raised-button color="primary" (click)="back()">Terug naar de Opdracht</button>
     </div>
+  </div>
 </section>

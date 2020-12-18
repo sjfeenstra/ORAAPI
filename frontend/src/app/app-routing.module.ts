@@ -11,47 +11,47 @@ import { HomeComponent } from './home/home.component';
 import { VrijgifteComponent } from './controles/vrijgifte/vrijgifte.component';
 
 const routes: Routes = [
-{
-  path: 'login',
-  component: LoginComponent,
-},
-{
-  path: 'home',
-  component: HomeComponent,
-},
-{
-  path: 'logout',
-  component: LogoutComponent,
-},
-{
-  path: 'orderOverview',
-  component: OrderOverviewComponent
-},
-{
-  path: 'batchOverview/:orderId',
-  component: BatchOverviewComponent
-},
-{
-  path: 'rolOverview/:batchId',
-  component: RolOverviewComponent
-},
-{
-  path: 'rolData/:rolId',
-  component: RolDataComponent
-},
-{
-  path: 'controleLoggen',
-  component: ControleLoggenComponent
-},
-{
-  path: 'vrijgifte',
-  component: VrijgifteComponent
-},
-{ path: '**',   redirectTo: 'login', pathMatch: 'full' }
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+  },
+  {
+    path: 'orderOverview',
+    component: OrderOverviewComponent,
+  },
+  {
+    path: 'batchOverview/:orderId',
+    component: BatchOverviewComponent,
+  },
+  {
+    path: 'rolOverview/:batchId',
+    component: RolOverviewComponent,
+  },
+  {
+    path: 'rolData/:rolId',
+    component: RolDataComponent,
+  },
+  {
+    path: 'controleLoggen',
+    component: ControleLoggenComponent,
+  },
+  {
+    path: 'vrijgifte',
+    component: VrijgifteComponent,
+  },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
