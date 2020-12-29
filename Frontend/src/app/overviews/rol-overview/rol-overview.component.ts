@@ -5,6 +5,10 @@ import { Controle, controles } from '../../models/controle';
 import { Batch, batches } from '../../models/batch';
 import { Order, orders } from '../../models/order';
 import { Rol, rols } from '../../models/rol';
+import { ControleService } from '../../services/controle.service';
+import { RolService } from '../../services/rol.service';
+import { BatchService } from '../../services/batch.service';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-rol-overview',
@@ -18,31 +22,22 @@ export class RolOverviewComponent implements OnInit {
   controles = controles;
   selectedRol: Rol;
 
-  displayedColumns: string[] = [
-    'controle',
-    'succesvol uitgevoerd',
-    'toelichting',
-    'medewerker',
-  ];
-
-  constructor(private location: Location, private route: ActivatedRoute) {
+  constructor(
+    private location: Location,
+    private route: ActivatedRoute,
+    private controleService: ControleService,
+    private rolService: RolService,
+    private batchService: BatchService,
+    private orderService: OrderService
+  ) {
     this.selectedRol = { rolId: '', Patient: '' };
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      if (this.batches.find((e) => e.batchId === params.get('batchId'))) {
-        this.batch = this.batches.find(
-          (e) => e.batchId === params.get('batchId')
-        );
-        // Hiervoor is een datamodel nodig om de juiste rollen bij batches te linken.
-        this.rols = rols.filter((row) =>
-          row.rolId.includes(this.batch.batchId)
-        );
-        this.controles = controles.filter(
-          (row) => row.id === this.batch.batchId
-        );
-      }
+      this.batch = this.batchService.getBatch(params.get('batchId')!);
+      this.rols = this.rolService.getRols(this.batch.batchId);
+      this.controles = this.controleService.getControles(this.batch.batchId);
     });
   }
 

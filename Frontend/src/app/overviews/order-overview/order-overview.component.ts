@@ -5,6 +5,10 @@ import { Controle, controles } from '../../models/controle';
 import { Batch, batches } from '../../models/batch';
 import { Order, orders } from '../../models/order';
 import { Rol, rols } from '../../models/rol';
+import { ControleService } from '../../services/controle.service';
+import { RolService } from '../../services/rol.service';
+import { BatchService } from '../../services/batch.service';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-order-overview',
@@ -12,12 +16,18 @@ import { Rol, rols } from '../../models/rol';
   styleUrls: ['./order-overview.component.css'],
 })
 export class OrderOverviewComponent implements OnInit {
-  controles = controles;
-  orders = orders;
+  orders: Order[];
   selectedOrder: Order;
 
-  constructor(private location: Location) {
+  constructor(
+    private location: Location,
+    private controleService: ControleService,
+    private rolService: RolService,
+    private batchService: BatchService,
+    private orderService: OrderService
+  ) {
     this.selectedOrder = { orderId: '', institute: '' };
+    this.orders = this.orderService.getOrders();
   }
 
   ngOnInit(): void {}
@@ -27,8 +37,8 @@ export class OrderOverviewComponent implements OnInit {
   }
 
   checker(order: Order): Number {
-    return controles
-      .filter((row) => row.id === order.orderId)
+    return this.controleService
+      .getControles(order.orderId)
       .filter((row) => row.controle === true).length;
   }
   selectOrder(order: Order): void {

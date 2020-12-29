@@ -5,6 +5,11 @@ import { Controle, controles } from '../../models/controle';
 import { Batch, batches } from '../../models/batch';
 import { Order, orders } from '../../models/order';
 import { Rol, rols } from '../../models/rol';
+import { ControleService } from '../../services/controle.service';
+import { RolService } from '../../services/rol.service';
+import { BatchService } from '../../services/batch.service';
+import { OrderService } from '../../services/order.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-batch-overview',
@@ -17,24 +22,22 @@ export class BatchOverviewComponent implements OnInit {
   controles = controles;
   selectedBatch: Batch;
 
-  displayedColumns: string[] = [
-    'controle',
-    'succesvol uitgevoerd',
-    'toelichting',
-    'medewerker',
-  ];
-
-  constructor(private location: Location, private route: ActivatedRoute) {
+  constructor(
+    private location: Location,
+    private route: ActivatedRoute,
+    private controleService: ControleService,
+    private rolService: RolService,
+    private batchService: BatchService,
+    private orderService: OrderService
+  ) {
     this.selectedBatch = { batchId: '', zakjesAantal: 0 };
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.order = orders.find((e) => e.orderId === params.get('orderId'));
-      this.batches = batches.filter((row) =>
-        row.batchId.includes(this.order.orderId)
-      );
-      this.controles = controles.filter((row) => row.id === this.order.orderId);
+      this.order = this.orderService.getOrder(params.get('orderId')!);
+      this.batches = this.batchService.getBatches(this.order.orderId);
+      this.controles = this.controleService.getControles(this.order.orderId);
     });
   }
 
