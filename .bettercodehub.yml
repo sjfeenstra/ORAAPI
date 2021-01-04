@@ -1,3 +1,5 @@
 component_depth: 6
 languages:
-- java
+- python
+- typescript
+- javascript
