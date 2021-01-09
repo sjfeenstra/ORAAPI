@@ -4,7 +4,7 @@
       <h1>Batch gegevens</h1>
 
       <div *ngIf="batch">
-        <h3>Batch {{batch.batchId}}</h3>
+        <h3>Batch {{batch.batch_NR}}</h3>
         <div *ngFor="let controle of controles">
           <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -23,14 +23,14 @@
       <br>
       <h3>Aanwezige rollen</h3>
       <mat-divider></mat-divider>
-      <div *ngFor="let rol of rols; index as rolId" [routerLink]="['/rolData/', rol.rolId]">
+      <div *ngFor="let rol of rols; index as roll_NR" [routerLink]="['/rolData/', rol.roll_NR]">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Rol {{rol.rolId}}
+              Rol {{rol.roll_NR}}
             </mat-panel-title>
             <mat-panel-description>
-              Aantal bijzondere controles {{checker(rol)}}
+              <!-- Aantal bijzondere controles {{checker(rol)}} -->
             </mat-panel-description>
           </mat-expansion-panel-header>
         </mat-expansion-panel>

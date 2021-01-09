@@ -28,15 +28,15 @@ const routes: Routes = [
     component: OrderOverviewComponent,
   },
   {
-    path: 'batchOverview/:orderId',
+    path: 'batchOverview/:order_NR',
     component: BatchOverviewComponent,
   },
   {
-    path: 'rolOverview/:batchId',
+    path: 'rolOverview/:batch_NR',
     component: RolOverviewComponent,
   },
   {
-    path: 'rolData/:rolId',
+    path: 'rolData/:roll_NR',
     component: RolDataComponent,
   },
   {

@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Controle, controles } from '../../models/controle';
-import { Batch, batches } from '../../models/batch';
-import { Order, orders } from '../../models/order';
-import { Rol, rols } from '../../models/rol';
 import { ControleService } from '../../services/controle.service';
-import { RolService } from '../../services/rol.service';
-import { BatchService } from '../../services/batch.service';
-import { OrderService } from '../../services/order.service';
+import { RolService, Rol } from '../../services/rol.service';
+import { BatchService, Batch } from '../../services/batch.service';
+import { OrderService, Order } from '../../services/order.service';
 
 @Component({
   selector: 'app-order-overview',
@@ -16,7 +13,7 @@ import { OrderService } from '../../services/order.service';
   styleUrls: ['./order-overview.component.css'],
 })
 export class OrderOverviewComponent implements OnInit {
-  orders: Order[];
+  orders: any;
   selectedOrder: Order;
 
   constructor(
@@ -26,8 +23,10 @@ export class OrderOverviewComponent implements OnInit {
     private batchService: BatchService,
     private orderService: OrderService
   ) {
-    this.selectedOrder = { orderId: '', institute: '' };
-    this.orders = this.orderService.getOrders();
+    this.selectedOrder = { order_NR: '', institute: '', department: '' };
+    this.orderService.getOrders().subscribe((data) => {
+      this.orders = data;
+    });
   }
 
   ngOnInit(): void {}
@@ -38,14 +37,14 @@ export class OrderOverviewComponent implements OnInit {
 
   checker(order: Order): Number {
     return this.controleService
-      .getControles(order.orderId)
+      .getControles(order.order_NR)
       .filter((row) => row.controle === true).length;
   }
   selectOrder(order: Order): void {
     if (order != this.selectedOrder) {
       this.selectedOrder = order;
     } else {
-      this.selectedOrder = { orderId: '', institute: '' };
+      this.selectedOrder = { order_NR: '', institute: '', department: '' };
     }
   }
 }

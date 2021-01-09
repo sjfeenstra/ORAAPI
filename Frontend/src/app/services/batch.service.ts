@@ -1,20 +1,58 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { observable, Observable, of } from 'rxjs';
+import { Data, Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
 import { Controle, controles } from '../models/controle';
-import { Batch, batches } from '../models/batch';
-import { Order, orders } from '../models/order';
-import { Rol, rols } from '../models/rol';
+
+export interface Batch {
+  batch_NR: string;
+  start_datetime: Date;
+  end_datetime: Date;
+  total_NR_bags: number;
+  bags_checked: number;
+  bags_rejected: number;
+  NR_to_double_check: number;
+  double_checked: number;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class BatchService {
-  constructor() {}
+  batches: Array<Batch> = [];
 
-  getBatch(batchId: String) {
-    return batches.find((row) => row.batchId === batchId);
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private apiService: ApiService
+  ) {}
+
+  getBatch(batch_NR: String) {
+    return this.http
+      .get(this.apiService.getApiUrl() + 'batch/' + batch_NR)
+      .pipe(
+        map((result) => {
+          return result as Batch;
+        }),
+        catchError((err) => {
+          return of(err);
+        })
+      );
   }
 
-  getBatches(orderId: string) {
-    return batches.filter((row) => row.batchId.includes(orderId));
+  getBatches(order_NR: string) {
+    return this.http
+      .get(this.apiService.getApiUrl() + 'batch/')
+      .pipe(
+        map((result) => {
+          this.batches = result as Batch[];
+          return this.batches;
+        }),
+        catchError((err) => {
+          return of(err);
+        })
+      );
   }
 }

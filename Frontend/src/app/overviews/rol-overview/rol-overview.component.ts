@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Controle, controles } from '../../models/controle';
-import { Batch, batches } from '../../models/batch';
-import { Order, orders } from '../../models/order';
-import { Rol, rols } from '../../models/rol';
 import { ControleService } from '../../services/controle.service';
-import { RolService } from '../../services/rol.service';
-import { BatchService } from '../../services/batch.service';
-import { OrderService } from '../../services/order.service';
+import { RolService, Rol } from '../../services/rol.service';
+import { BatchService, Batch } from '../../services/batch.service';
+import { OrderService, Order } from '../../services/order.service';
 
 @Component({
   selector: 'app-rol-overview',
@@ -16,9 +13,9 @@ import { OrderService } from '../../services/order.service';
   styleUrls: ['./rol-overview.component.css'],
 })
 export class RolOverviewComponent implements OnInit {
-  rols = rols;
+  rols: any;
   batch: any;
-  batches = batches;
+  batches: any;
   controles = controles;
   selectedRol: Rol;
 
@@ -30,14 +27,23 @@ export class RolOverviewComponent implements OnInit {
     private batchService: BatchService,
     private orderService: OrderService
   ) {
-    this.selectedRol = { rolId: '', Patient: '' };
+    this.selectedRol = {
+      roll_NR: 0,
+      batch_NR: 0,
+      patient: '',
+      packaging_code: '',
+    };
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.batch = this.batchService.getBatch(params.get('batchId')!);
-      this.rols = this.rolService.getRols(this.batch.batchId);
-      this.controles = this.controleService.getControles(this.batch.batchId);
+      // this.batchService.getBatch(params.get('batch_NR')!).subscribe((data) => {
+      //   this.batch = data;
+      // });
+      this.rolService.getRols(params.get('batch_NR')!).subscribe((data) => {
+        this.rols = data;
+      });
+      this.controles = this.controleService.getControles(params.get('batch_NR')!);
     });
   }
 
@@ -45,16 +51,21 @@ export class RolOverviewComponent implements OnInit {
     this.location.back();
   }
 
-  checker(rol: Rol): Number {
-    return controles
-      .filter((row) => row.id === rol.rolId)
-      .filter((row) => row.controle === true).length;
-  }
+  // checker(rol: Rol): Number {
+  //   return controles
+  //     .filter((row) => row.id === rol.roll_NR)
+  //     .filter((row) => row.controle === true).length;
+  // }
   selectRol(rol: Rol): void {
     if (rol != this.selectedRol) {
       this.selectedRol = rol;
     } else {
-      this.selectedRol = { rolId: '', Patient: '' };
+      this.selectedRol = {
+        roll_NR: 0,
+        batch_NR: 0,
+        patient: '',
+        packaging_code: '',
+      };
     }
   }
 }

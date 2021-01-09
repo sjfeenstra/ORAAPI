@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
@@ -46,6 +46,7 @@ import { from } from 'rxjs';
     VrijgifteComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     CommonModule,
     AppRoutingModule,
