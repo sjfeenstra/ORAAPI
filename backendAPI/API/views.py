@@ -1,7 +1,9 @@
 from rest_framework import viewsets
-from API.models import Order, Batch, BatchPackagingProtocol, Roll, Bag, Error
-from API.serializers import OrderSerializer, BatchSerializer, BatchPackagingProtocolSerializer, RollSerializer, \
-    BagSerializer, ErrorSerializer
+from API.models import Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, Bag, MissingPictures, \
+    Error
+from API.serializers import OrderSerializer, BatchSerializer, BatchRowSerializer, PillsToBeAddedSerializer, \
+    OrderBatchSerializer, BatchChecksSerializer, RollSerializer, BagSerializer, MissingPicturesSerializer, \
+    ErrorSerializer
 
 
 class OrderViewSet(viewsets.ModelViewSet):
@@ -14,9 +16,24 @@ class BatchViewSet(viewsets.ModelViewSet):
     serializer_class = BatchSerializer
 
 
-class BatchPackagingProtocolViewSet(viewsets.ModelViewSet):
-    queryset = BatchPackagingProtocol.objects.all()
-    serializer_class = BatchPackagingProtocolSerializer
+class BatchRowViewSet(viewsets.ModelViewSet):
+    queryset = BatchRow.objects.all()
+    serializer_class = BatchRowSerializer
+
+
+class PillsToBeAddedViewSet(viewsets.ModelViewSet):
+    queryset = PillsToBeAdded.objects.all()
+    serializer_class = PillsToBeAddedSerializer
+
+
+class OrderBatchViewSet(viewsets.ModelViewSet):
+    queryset = OrderBatch.objects.all()
+    serializer_class = OrderBatchSerializer
+
+
+class BatchChecksViewSet(viewsets.ModelViewSet):
+    queryset = BatchChecks.objects.all()
+    serializer_class = BatchChecksSerializer
 
 
 class RollViewSet(viewsets.ModelViewSet):
@@ -27,6 +44,11 @@ class RollViewSet(viewsets.ModelViewSet):
 class BagViewSet(viewsets.ModelViewSet):
     queryset = Bag.objects.all()
     serializer_class = BagSerializer
+
+
+class MissingPicturesViewSet(viewsets.ModelViewSet):
+    queryset = MissingPictures.objects.all()
+    serializer_class = MissingPicturesSerializer
 
 
 class ErrorViewSet(viewsets.ModelViewSet):

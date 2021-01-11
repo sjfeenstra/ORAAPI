@@ -5,10 +5,14 @@ from API import views
 router = DefaultRouter()
 router.register(r'order', views.OrderViewSet)
 router.register(r'batch', views.BatchViewSet)
-router.register(r'BatchPackagingProtocol', views.BatchPackagingProtocolViewSet)
+router.register(r'batchrow', views.BatchRowViewSet)
+router.register(r'pillstoadd', views.PillsToBeAddedViewSet)
+router.register(r'orderbatch', views.OrderBatchViewSet)
+router.register(r'batchChecks', views.BatchChecksViewSet)
 router.register(r'roll', views.RollViewSet)
 router.register(r'bag', views.BagViewSet)
-router.register(r'errpr', views.ErrorViewSet)
+router.register(r'missingpictures', views.MissingPicturesViewSet)
+router.register(r'error', views.ErrorViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

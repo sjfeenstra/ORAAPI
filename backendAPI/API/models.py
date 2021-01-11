@@ -1,34 +1,18 @@
 from django.db import models
 
+NAME_LENGTH = 40
+REMARK_LENGTH = 200
+BATCH_NUMBER_LENGTH = 30
+MACHINE_ID_LENGTH = 10
+
 
 class Order(models.Model):
     order_NR = models.IntegerField()
-    institute = models.CharField(max_length=40)
-    department = models.CharField(max_length=40)
+    institute = models.CharField(max_length=NAME_LENGTH)
+    department = models.CharField(max_length=NAME_LENGTH)
 
 
 class Batch(models.Model):
-    batch_NR = models.CharField(max_length=30)
-    start_datetime = models.DateTimeField()
-    end_datetime = models.DateTimeField()
-    total_NR_bags = models.IntegerField()
-    bags_checked = models.IntegerField()
-    bags_rejected = models.IntegerField()
-    NR_to_double_check = models.IntegerField()
-    double_checked = models.IntegerField()
-    inspector = models.CharField(max_length=40)
-    checked_by = models.CharField(max_length=40)
-    remarks = models.CharField(max_length=100)
-
-
-class OrderBatch(models.Model):
-    order_NR = models.ForeignKey(Order, on_delete=models.RESTRICT)
-    batch_NR = models.ForeignKey(Batch, on_delete=models.RESTRICT)
-
-
-class BatchPackagingProtocol(models.Model):
-    REMARK_LENGTH = 200
-    BY_LENGTH = 40
     MON = "MONDAY"
     TUE = "TUESDAY"
     WED = "WEDNESDAY"
@@ -46,31 +30,17 @@ class BatchPackagingProtocol(models.Model):
         (SUN, "Zondag")
     ]
 
-    machine_ID = models.CharField(max_length=10)
+    # Batchverpakkingsprotocol
+    batch_NR = models.CharField(primary_key=True, max_length=BATCH_NUMBER_LENGTH)
+    machine_ID = models.CharField(max_length=MACHINE_ID_LENGTH)
+    packaging_code = models.IntegerField()
     run_day = models.CharField(
         max_length=10,
         choices=DAYS_IN_WEEK_CHOICES
     )
+    # bestand doorsturen, de naam van ingelogde medewerker wordt hier gelogd.
+    DB = models.CharField(max_length=NAME_LENGTH)
     week = models.IntegerField()
-    line_clearance_by = models.CharField(max_length=BY_LENGTH)
-    line_clearance_remarks = models.CharField(max_length=REMARK_LENGTH)
-    start_check_by = models.CharField(max_length=BY_LENGTH)
-    start_check_remarks = models.CharField(max_length=REMARK_LENGTH)
-    label_check_by = models.CharField(max_length=BY_LENGTH)
-    label_check_remarks = models.CharField(max_length=REMARK_LENGTH)
-    PSS_check_by = models.CharField(max_length=BY_LENGTH)
-    PSS_check_remarks = models.CharField(max_length=REMARK_LENGTH)
-    tray_fill_by = models.CharField(max_length=BY_LENGTH)
-    tray_check_by = models.CharField(max_length=BY_LENGTH)
-    tray_fill_check_remarks = models.CharField(max_length=REMARK_LENGTH)
-    schouw_by = models.CharField(max_length=BY_LENGTH)
-    schouw_remarks = models.CharField(max_length=REMARK_LENGTH)
-    batch_validation = models.BooleanField()
-    batch_validation_by = models.CharField(max_length=BY_LENGTH)
-    cargo_office_by = models.CharField(max_length=BY_LENGTH)
-    packaging_by = models.CharField(max_length=BY_LENGTH)
-    control_seal_by = models.CharField(max_length=BY_LENGTH)
-    end_check_by = models.CharField(max_length=BY_LENGTH)
     leave_day = models.CharField(
         max_length=10,
         choices=DAYS_IN_WEEK_CHOICES
@@ -80,15 +50,80 @@ class BatchPackagingProtocol(models.Model):
         max_length=10,
         choices=DAYS_IN_WEEK_CHOICES
     )
-    forward_time = models.IntegerField()
-    Slick_start_day = models.DateField()
+    forward_time = models.TimeField()
+    remarks_end_control = models.CharField(max_length=REMARK_LENGTH)
+
+    # Inspector Batch Report
+    checked_by = models.CharField(max_length=NAME_LENGTH)
+    start_datetime = models.DateTimeField()
+    end_datetime = models.DateTimeField()
+    inspector = models.CharField(max_length=NAME_LENGTH)
+    batch_started = models.DateTimeField()
+    total_NR_bags = models.IntegerField()
+    bags_checked = models.IntegerField()
+    total_NR_patients = models.IntegerField()
+    bags_rejected = models.IntegerField()
+    NR_to_double_check = models.IntegerField()
+    double_checked = models.IntegerField()
+
+
+class BatchRow(models.Model):
+    # MC = MD = Multidose => alle tabletten in alle aantallen bij elkaar in zakje
+    # CD = Combidose => 1 soort tabletten per zakje. kunnen wel meerdere tabletten zijn.
+    MC_CD_CHOICES = [
+        ("MC", "MC"),
+        ("CD", "CD")
+    ]
+    batch_NR = models.ForeignKey(Batch, on_delete=models.CASCADE)
+    department = models.CharField(max_length=NAME_LENGTH)
+    # Als er meer dan 2k zakjes zijn wordt de opdracht automatisch gesplitst
+    split_NR = models.IntegerField()
+    start_datetime = models.DateTimeField()
+    end_datetime = models.DateTimeField()
+    NR_patients = models.IntegerField()
+    NR_bags = models.IntegerField()
+    MC_CD = models.CharField(
+        max_length=2,
+        choices=MC_CD_CHOICES
+    )
+    remarks = models.CharField(max_length=REMARK_LENGTH)
+
+
+class PillsToBeAdded(models.Model):
+    pil_ID = models.IntegerField()
+    medication_name = models.CharField(max_length=NAME_LENGTH)
+    free_text = models.CharField(max_length=REMARK_LENGTH)
+
+
+class OrderBatch(models.Model):
+    order_NR = models.ForeignKey(Order, on_delete=models.RESTRICT)
+    batch_NR = models.ForeignKey(Batch, on_delete=models.RESTRICT)
+
+
+class BatchChecks(models.Model):
+    batch_nr = models.OneToOneField(Batch, on_delete=models.CASCADE)
+    PSS_check_by = models.CharField(max_length=NAME_LENGTH)
+    PSS_check_remarks = models.CharField(max_length=REMARK_LENGTH)
+    tray_fill_by = models.CharField(max_length=NAME_LENGTH)
+    tray_check_by = models.CharField(max_length=NAME_LENGTH)
+    tray_fill_check_remarks = models.CharField(max_length=REMARK_LENGTH)
+    schouw_by = models.CharField(max_length=NAME_LENGTH)
+    schouw_remarks = models.CharField(max_length=REMARK_LENGTH)
+    batch_validation = models.BooleanField()
+    batch_validation_by = models.CharField(max_length=NAME_LENGTH)
+    cargo_office_by = models.CharField(max_length=NAME_LENGTH)
+    packaging_by = models.CharField(max_length=NAME_LENGTH)
+    control_seal_by = models.CharField(max_length=NAME_LENGTH)
+    end_check_by = models.CharField(max_length=NAME_LENGTH)
+    internal_error = models.BooleanField()
+    empty_bags_delivered = models.BooleanField()
+    other_errors = models.BooleanField()
 
 
 class Roll(models.Model):
-    roll_NR = models.IntegerField()
+    roll_NR = models.IntegerField(primary_key=True)
     batch_NR = models.ForeignKey(Batch, on_delete=models.CASCADE)
-    patient = models.CharField(max_length=40)
-    packaging_code = models.CharField(max_length=40)
+    patient = models.CharField(max_length=NAME_LENGTH)
 
 
 class Bag(models.Model):
@@ -101,12 +136,19 @@ class Bag(models.Model):
         (AFTER_BAG, "Naloopzakje")
     ]
 
-    bag_NR = models.IntegerField()
+    bag_NR = models.IntegerField(primary_key=True)
     roll_NR = models.ForeignKey(Roll, on_delete=models.CASCADE)
     bag_type = models.CharField(
         max_length=15,
         choices=BAG_CHOICES
     )
+
+
+class MissingPictures(models.Model):
+    bag_NR = models.ForeignKey(Bag, on_delete=models.CASCADE)
+    patient = models.CharField(max_length=NAME_LENGTH)
+    corrected_by = models.CharField(max_length=NAME_LENGTH)
+    checked_by = models.CharField(max_length=NAME_LENGTH)
 
 
 class Error(models.Model):
@@ -138,18 +180,20 @@ class Error(models.Model):
         (SUN, "Zondag")
     ]
 
+    bag_NR = models.ForeignKey(Bag, on_delete=models.CASCADE)
     error_NR = models.IntegerField()
     error = models.CharField(
         max_length=10,
         choices=ERROR_CHOICES
     )
-    error_desc = models.CharField(max_length=100)
-    free_text = models.CharField(max_length=100)
+    patient = models.CharField(max_length=NAME_LENGTH)
+    error_desc = models.CharField(max_length=REMARK_LENGTH)
+    free_text = models.CharField(max_length=REMARK_LENGTH)
     day = models.CharField(
         max_length=10,
         choices=DAYS_IN_WEEK_CHOICES
     )
     date = models.DateField()
     time = models.TimeField()
-    corrected_by = models.CharField(max_length=40)
-    checked_by = models.CharField(max_length=40)
+    corrected_by = models.CharField(max_length=NAME_LENGTH)
+    checked_by = models.CharField(max_length=NAME_LENGTH)
