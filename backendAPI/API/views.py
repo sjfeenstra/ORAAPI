@@ -1,9 +1,19 @@
 from rest_framework import viewsets
-from API.models import Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, Bag, MissingPictures, \
-    Error
-from API.serializers import OrderSerializer, BatchSerializer, BatchRowSerializer, PillsToBeAddedSerializer, \
-    OrderBatchSerializer, BatchChecksSerializer, RollSerializer, BagSerializer, MissingPicturesSerializer, \
-    ErrorSerializer
+from API.models import Institute, Department, Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, \
+    Bag, MissingPictures, Error
+from API.serializers import InstituteSerializer, DepartmentSerializer, OrderSerializer, BatchSerializer, \
+    BatchRowSerializer, PillsToBeAddedSerializer, OrderBatchSerializer, BatchChecksSerializer, RollSerializer, \
+    BagSerializer, MissingPicturesSerializer, ErrorSerializer
+
+
+class InstituteViewSet(viewsets.ModelViewSet):
+    queryset = Institute.objects.all()
+    serializer_class = InstituteSerializer
+
+
+class DepartmentViewSet(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
 
 
 class OrderViewSet(viewsets.ModelViewSet):

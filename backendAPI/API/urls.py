@@ -3,6 +3,8 @@ from rest_framework.routers import DefaultRouter
 from API import views
 
 router = DefaultRouter()
+router.register(r'institute', views.InstituteViewSet)
+router.register(r'department', views.DepartmentViewSet)
 router.register(r'order', views.OrderViewSet)
 router.register(r'batch', views.BatchViewSet)
 router.register(r'batchrow', views.BatchRowViewSet)

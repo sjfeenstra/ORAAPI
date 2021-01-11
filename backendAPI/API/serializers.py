@@ -1,6 +1,18 @@
 from rest_framework import serializers
-from API.models import Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, Bag, MissingPictures, \
-    Error
+from API.models import Institute, Department, Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, \
+    Bag, MissingPictures, Error
+
+
+class InstituteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Institute
+        fields = ['institute']
+
+
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Department
+        fields = ['department', 'Institute']
 
 
 class OrderSerializer(serializers.ModelSerializer):

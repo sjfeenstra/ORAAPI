@@ -6,52 +6,32 @@ BATCH_NUMBER_LENGTH = 30
 MACHINE_ID_LENGTH = 10
 
 
+class Institute(models.Model):
+    institute = models.CharField(primary_key=True, max_length=NAME_LENGTH)
+
+
+class Department(models.Model):
+    department = models.CharField(primary_key=True, max_length=NAME_LENGTH)
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE)
+
+
 class Order(models.Model):
     order_NR = models.IntegerField()
-    institute = models.CharField(max_length=NAME_LENGTH)
-    department = models.CharField(max_length=NAME_LENGTH)
+    institute = models.OneToOneField(Institute, on_delete=models.CASCADE)
+    order_released = models.BooleanField()
 
 
 class Batch(models.Model):
-    MON = "MONDAY"
-    TUE = "TUESDAY"
-    WED = "WEDNESDAY"
-    THU = "THURSDAY"
-    FRI = "FRIDAY"
-    SAT = "SATURDAY"
-    SUN = "SUNDAY"
-    DAYS_IN_WEEK_CHOICES = [
-        (MON, "Maandag"),
-        (TUE, "Dinsdag"),
-        (WED, "Woensdag"),
-        (THU, "Donderdag"),
-        (FRI, "Vrijdag"),
-        (SAT, "Zaterdag"),
-        (SUN, "Zondag")
-    ]
-
     # Batchverpakkingsprotocol
     batch_NR = models.CharField(primary_key=True, max_length=BATCH_NUMBER_LENGTH)
     machine_ID = models.CharField(max_length=MACHINE_ID_LENGTH)
     packaging_code = models.IntegerField()
-    run_day = models.CharField(
-        max_length=10,
-        choices=DAYS_IN_WEEK_CHOICES
-    )
     # bestand doorsturen, de naam van ingelogde medewerker wordt hier gelogd.
     DB = models.CharField(max_length=NAME_LENGTH)
     week = models.IntegerField()
-    leave_day = models.CharField(
-        max_length=10,
-        choices=DAYS_IN_WEEK_CHOICES
-    )
-    leave_time = models.TimeField()
-    forward_day = models.CharField(
-        max_length=10,
-        choices=DAYS_IN_WEEK_CHOICES
-    )
-    forward_time = models.TimeField()
-    remarks_end_control = models.CharField(max_length=REMARK_LENGTH)
+    leave_datetime = models.DateTimeField()
+    forward_datetime = models.DateTimeField()
+    remarks_end_control = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
 
     # Inspector Batch Report
     checked_by = models.CharField(max_length=NAME_LENGTH)
@@ -75,7 +55,7 @@ class BatchRow(models.Model):
         ("CD", "CD")
     ]
     batch_NR = models.ForeignKey(Batch, on_delete=models.CASCADE)
-    department = models.CharField(max_length=NAME_LENGTH)
+    department = models.OneToOneField(Department, on_delete=models.CASCADE)
     # Als er meer dan 2k zakjes zijn wordt de opdracht automatisch gesplitst
     split_NR = models.IntegerField()
     start_datetime = models.DateTimeField()
@@ -86,13 +66,7 @@ class BatchRow(models.Model):
         max_length=2,
         choices=MC_CD_CHOICES
     )
-    remarks = models.CharField(max_length=REMARK_LENGTH)
-
-
-class PillsToBeAdded(models.Model):
-    pil_ID = models.IntegerField()
-    medication_name = models.CharField(max_length=NAME_LENGTH)
-    free_text = models.CharField(max_length=REMARK_LENGTH)
+    remarks = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
 
 
 class OrderBatch(models.Model):
@@ -103,12 +77,12 @@ class OrderBatch(models.Model):
 class BatchChecks(models.Model):
     batch_nr = models.OneToOneField(Batch, on_delete=models.CASCADE)
     PSS_check_by = models.CharField(max_length=NAME_LENGTH)
-    PSS_check_remarks = models.CharField(max_length=REMARK_LENGTH)
+    PSS_check_remarks = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
     tray_fill_by = models.CharField(max_length=NAME_LENGTH)
     tray_check_by = models.CharField(max_length=NAME_LENGTH)
-    tray_fill_check_remarks = models.CharField(max_length=REMARK_LENGTH)
+    tray_fill_check_remarks = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
     schouw_by = models.CharField(max_length=NAME_LENGTH)
-    schouw_remarks = models.CharField(max_length=REMARK_LENGTH)
+    schouw_remarks = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
     batch_validation = models.BooleanField()
     batch_validation_by = models.CharField(max_length=NAME_LENGTH)
     cargo_office_by = models.CharField(max_length=NAME_LENGTH)
@@ -151,6 +125,13 @@ class MissingPictures(models.Model):
     checked_by = models.CharField(max_length=NAME_LENGTH)
 
 
+class PillsToBeAdded(models.Model):
+    pil_ID = models.IntegerField()
+    bag_NR = models.ForeignKey(Bag, on_delete=models.CASCADE)
+    medication_name = models.CharField(max_length=NAME_LENGTH)
+    free_text = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
+
+
 class Error(models.Model):
     TOO_MUCH = "TOO_MUCH"
     TOO_LITTLE = "TOO_LITTLE"
@@ -163,23 +144,6 @@ class Error(models.Model):
         (TOO_LATE, "Te laat")
     ]
 
-    MON = "MONDAY"
-    TUE = "TUESDAY"
-    WED = "WEDNESDAY"
-    THU = "THURSDAY"
-    FRI = "FRIDAY"
-    SAT = "SATURDAY"
-    SUN = "SUNDAY"
-    DAYS_IN_WEEK_CHOICES = [
-        (MON, "Maandag"),
-        (TUE, "Dinsdag"),
-        (WED, "Woensdag"),
-        (THU, "Donderdag"),
-        (FRI, "Vrijdag"),
-        (SAT, "Zaterdag"),
-        (SUN, "Zondag")
-    ]
-
     bag_NR = models.ForeignKey(Bag, on_delete=models.CASCADE)
     error_NR = models.IntegerField()
     error = models.CharField(
@@ -187,13 +151,8 @@ class Error(models.Model):
         choices=ERROR_CHOICES
     )
     patient = models.CharField(max_length=NAME_LENGTH)
-    error_desc = models.CharField(max_length=REMARK_LENGTH)
-    free_text = models.CharField(max_length=REMARK_LENGTH)
-    day = models.CharField(
-        max_length=10,
-        choices=DAYS_IN_WEEK_CHOICES
-    )
-    date = models.DateField()
-    time = models.TimeField()
+    error_desc = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
+    free_text = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
+    error_datetime = models.DateTimeField()
     corrected_by = models.CharField(max_length=NAME_LENGTH)
     checked_by = models.CharField(max_length=NAME_LENGTH)
