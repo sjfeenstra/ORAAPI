@@ -12,22 +12,22 @@ class InstituteSerializer(serializers.ModelSerializer):
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
-        fields = ['department', 'Institute']
+        fields = ['department', 'institute']
 
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = ['order_NR', 'institute', 'department']
+        fields = ['order_NR', 'institute', 'order_released']
 
 
 class BatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Batch
-        fields = ['batch_NR', 'machine_ID', 'packaging_code', 'run_day', 'DB', 'week', 'leave_day', 'leave_time',
-                  'forward_day', 'forward_time', 'remarks_end_control', 'checked_by', 'start_datetime', 'end_datetime',
-                  'inspector', 'batch_started', 'total_NR_bags', 'bags_checked', 'total_NR_patients', 'bags_rejected',
-                  'NR_to_double_check', 'double_checked']
+        fields = ['batch_NR', 'machine_ID', 'packaging_code', 'DB', 'week', 'leave_datetime', 'forward_datetime',
+                  'remarks_end_control', 'checked_by', 'start_datetime', 'end_datetime', 'inspector', 'batch_started',
+                  'total_NR_bags', 'bags_checked', 'total_NR_patients', 'bags_rejected', 'NR_to_double_check',
+                  'double_checked']
 
 
 class BatchRowSerializer(serializers.ModelSerializer):
@@ -79,7 +79,7 @@ class MissingPicturesSerializer(serializers.ModelSerializer):
 class ErrorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Error
-        fields = ['bag_NR', 'error_NR', 'error', 'patient', 'error_desc', 'free_text', 'day', 'date', 'time', 'corrected_by',
+        fields = ['bag_NR', 'error_NR', 'error', 'patient', 'error_desc', 'free_text', 'error_datetime', 'corrected_by',
                   'checked_by']
 
 
