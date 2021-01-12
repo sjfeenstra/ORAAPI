@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from rest_framework.response import Response
+
 from API.models import Institute, Department, Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, \
     Bag, MissingPictures, Error
 from API.serializers import InstituteSerializer, DepartmentSerializer, OrderSerializer, BatchSerializer, \
@@ -17,13 +19,31 @@ class DepartmentViewSet(viewsets.ModelViewSet):
 
 
 class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    filterset_fields = ('order_released',)
+
+
+class OrderVrijgifteViewSet(viewsets.ModelViewSet):
+    serializer_class = OrderSerializer
+    queryset = Order.objects.all()
+
+    def partial_update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data={'order_released': True}, partial=True)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
 
 
 class BatchViewSet(viewsets.ModelViewSet):
-    queryset = Batch.objects.all()
     serializer_class = BatchSerializer
+
+    def get_queryset(self):
+        queryset = Batch.objects.all()
+        order_NR = self.request.query_params.get('order_NR', None)
+        if order_NR is not None:
+            queryset = queryset.filter(orderbatch__order_NR=order_NR)
+        return queryset
 
 
 class BatchRowViewSet(viewsets.ModelViewSet):
