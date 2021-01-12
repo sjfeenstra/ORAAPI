@@ -16,7 +16,7 @@ export class RolOverviewComponent implements OnInit {
   rols: any;
   batch: any;
   batches: any;
-  controles = controles;
+  controles: any;
   selectedRol: Rol;
 
   constructor(
@@ -37,13 +37,13 @@ export class RolOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      // this.batchService.getBatch(params.get('batch_NR')!).subscribe((data) => {
-      //   this.batch = data;
-      // });
-      this.rolService.getRols(params.get('batch_NR')!).subscribe((data) => {
+      this.batchService.getBatch(params.get('batch_NR')!).subscribe((data) => {
+        this.batch = data;
+      });
+      this.rolService.getRols(this.batch.batch_NR).subscribe((data) => {
         this.rols = data;
       });
-      this.controles = this.controleService.getControles(params.get('batch_NR')!);
+      this.controles = this.controleService.getControles(this.batch.batch_NR);
     });
   }
 

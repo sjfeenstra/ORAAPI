@@ -16,7 +16,7 @@ import { from } from 'rxjs';
 export class BatchOverviewComponent implements OnInit {
   batches: any;
   order: any;
-  controles = controles;
+  controles: any;
   selectedBatch: Batch;
 
   constructor(
@@ -41,14 +41,16 @@ export class BatchOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      // this.orderService.getOrder(params.get('order_NR')!).subscribe((data) => {
-      //   this.order = data;
-      // });
-      this.batchService.getBatches(params.get('order_NR')!).subscribe((data) => {
-        this.batches = data;
+      this.orderService.getOrder(params.get('order_NR')!).subscribe((data) => {
+        this.order = data;
       });
-      this.controles = this.controleService.getControles(params.get('order_NR')!);
+      this.batchService
+        .getBatches(params.get('order_NR')!)
+        .subscribe((data) => {
+          this.batches = data;
+        });
     });
+    this.controles = this.controleService.getControles(this.order.order_NR);
   }
 
   back(): void {
@@ -60,6 +62,7 @@ export class BatchOverviewComponent implements OnInit {
       .filter((row) => row.id === batch.batch_NR)
       .filter((row) => row.controle === true).length;
   }
+
   selectBatch(batch: Batch): void {
     if (batch != this.selectedBatch) {
       this.selectedBatch = batch;

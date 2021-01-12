@@ -31,7 +31,7 @@ export class BatchService {
 
   getBatch(batch_NR: String) {
     return this.http
-      .get(this.apiService.getApiUrl() + 'batch/' + batch_NR)
+      .get(this.apiService.getApiUrl() + 'batch/' + batch_NR + '/')
       .pipe(
         map((result) => {
           return result as Batch;
@@ -44,7 +44,7 @@ export class BatchService {
 
   getBatches(order_NR: string) {
     return this.http
-      .get(this.apiService.getApiUrl() + 'batch/')
+      .get(this.apiService.getApiUrl() + 'batch/?order_NR=' + order_NR)
       .pipe(
         map((result) => {
           this.batches = result as Batch[];

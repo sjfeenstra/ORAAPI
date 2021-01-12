@@ -23,7 +23,7 @@ export class OrderOverviewComponent implements OnInit {
     private batchService: BatchService,
     private orderService: OrderService
   ) {
-    this.selectedOrder = { order_NR: '', institute: '', department: '' };
+    this.selectedOrder = { order_NR: '', institute: '', order_released: false };
     this.orderService.getOrders().subscribe((data) => {
       this.orders = data;
     });
@@ -44,7 +44,11 @@ export class OrderOverviewComponent implements OnInit {
     if (order != this.selectedOrder) {
       this.selectedOrder = order;
     } else {
-      this.selectedOrder = { order_NR: '', institute: '', department: '' };
+      this.selectedOrder = {
+        order_NR: '',
+        institute: '',
+        order_released: false,
+      };
     }
   }
 }

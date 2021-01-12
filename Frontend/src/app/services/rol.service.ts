@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { observable, Observable, of } from 'rxjs';
 import { Data, Router } from '@angular/router';
-import { ApiService} from '../services/api.service';
+import { ApiService } from '../services/api.service';
 
 export interface Rol {
   roll_NR: number;
@@ -26,16 +26,14 @@ export class RolService {
   ) {}
 
   getRol(roll_NR: String) {
-    return this.http
-      .get(this.apiService.getApiUrl() + 'roll/' + roll_NR)
-      .pipe(
-        map((result) => {
-          return result as Rol;
-        }),
-        catchError((err) => {
-          return of(err);
-        })
-      );
+    return this.http.get(this.apiService.getApiUrl() + 'roll/' + roll_NR).pipe(
+      map((result) => {
+        return result as Rol;
+      }),
+      catchError((err) => {
+        return of(err);
+      })
+    );
   }
 
   getRols(batch_NR: string) {

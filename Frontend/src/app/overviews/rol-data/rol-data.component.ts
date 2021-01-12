@@ -14,7 +14,7 @@ import { OrderService, Order } from '../../services/order.service';
 })
 export class RolDataComponent implements OnInit {
   rol: any;
-  controles = controles;
+  controles: any;
 
   constructor(
     private location: Location,
@@ -27,7 +27,9 @@ export class RolDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.rol = this.rolService.getRol(params.get('roll_NR')!);
+      this.rolService.getRol(params.get('roll_NR')!).subscribe((data) => {
+        this.rol = data;
+      });
       this.controles = this.controleService.getControles(this.rol.roll_NR);
     });
   }

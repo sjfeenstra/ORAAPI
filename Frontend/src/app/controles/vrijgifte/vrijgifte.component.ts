@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { vrijgifte } from './vrijgifte';
+import { OrderService, Order } from '../../services/order.service';
 
 @Component({
   selector: 'app-vrijgifte',
@@ -10,14 +10,24 @@ import { vrijgifte } from './vrijgifte';
 })
 export class VrijgifteComponent implements OnInit {
   title = 'Vrijgifte';
-  displayedColumns: string[] = ['.', 'opdracht', 'datum', 'markering'];
-  dataSource = vrijgifte;
+  orders: any;
+  selectedOptions: Order[] = [];
 
-  constructor(private location: Location) {}
+  constructor(private location: Location, private orderService: OrderService) {
+    this.orderService.getOrders('?order_released=False').subscribe((data) => {
+      this.orders = data;
+    });
+  }
 
   ngOnInit(): void {}
 
   back(): void {
     this.location.back();
+  }
+
+  vrijgeven() {
+    this.selectedOptions.forEach((order) => {
+      this.orderService.vrijgifte(order).subscribe();
+    });
   }
 }
