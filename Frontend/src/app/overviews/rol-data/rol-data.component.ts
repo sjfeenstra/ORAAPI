@@ -13,7 +13,7 @@ import { OrderService, Order } from '../../services/order.service';
   styleUrls: ['./rol-data.component.css'],
 })
 export class RolDataComponent implements OnInit {
-  rol: any;
+  rol: Rol;
   controles: any;
 
   constructor(
@@ -23,15 +23,22 @@ export class RolDataComponent implements OnInit {
     private rolService: RolService,
     private batchService: BatchService,
     private orderService: OrderService
-  ) {}
+  ) {
+    this.rol = {
+      roll_NR: -1,
+      batch_NR:  "",
+      patient: "",
+      packaging_code: "",
+    }
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.rolService.getRol(params.get('roll_NR')!).subscribe((data) => {
         this.rol = data;
       });
-      this.controles = this.controleService.getControles(this.rol.roll_NR);
     });
+    this.controles = this.controleService.getControles();
   }
 
   back(): void {

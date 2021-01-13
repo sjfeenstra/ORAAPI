@@ -8,7 +8,7 @@ import { ApiService } from '../services/api.service';
 
 export interface Rol {
   roll_NR: number;
-  batch_NR: number;
+  batch_NR: String;
   patient: string;
   packaging_code: string;
 }

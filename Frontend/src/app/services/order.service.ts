@@ -37,7 +37,7 @@ export class OrderService {
       );
   }
 
-  getOrders(optionalParameter?: String) {
+  getOrders(optionalParameter: String = "") {
     return this.http
       .get(this.apiService.getApiUrl() + 'order' + optionalParameter)
       .pipe(

@@ -29,7 +29,7 @@ export class RolOverviewComponent implements OnInit {
   ) {
     this.selectedRol = {
       roll_NR: 0,
-      batch_NR: 0,
+      batch_NR: '',
       patient: '',
       packaging_code: '',
     };
@@ -40,10 +40,10 @@ export class RolOverviewComponent implements OnInit {
       this.batchService.getBatch(params.get('batch_NR')!).subscribe((data) => {
         this.batch = data;
       });
-      this.rolService.getRols(this.batch.batch_NR).subscribe((data) => {
+      this.rolService.getRols(params.get('batch_NR')!).subscribe((data) => {
         this.rols = data;
       });
-      this.controles = this.controleService.getControles(this.batch.batch_NR);
+      this.controles = this.controleService.getControles();
     });
   }
 
@@ -62,7 +62,7 @@ export class RolOverviewComponent implements OnInit {
     } else {
       this.selectedRol = {
         roll_NR: 0,
-        batch_NR: 0,
+        batch_NR: "",
         patient: '',
         packaging_code: '',
       };

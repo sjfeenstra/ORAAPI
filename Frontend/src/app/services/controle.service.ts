@@ -7,7 +7,7 @@ import { Controle, controles } from '../models/controle';
 export class ControleService {
   constructor() {}
 
-  getControles(id: String) {
-    return controles.filter((row) => row.id === id);
+  getControles() {
+    return undefined
   }
 }
