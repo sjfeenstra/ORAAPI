@@ -19,6 +19,7 @@ class DepartmentViewSet(viewsets.ModelViewSet):
 
 
 class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
     serializer_class = OrderSerializer
     filterset_fields = ('order_released',)
 
@@ -36,14 +37,9 @@ class OrderVrijgifteViewSet(viewsets.ModelViewSet):
 
 
 class BatchViewSet(viewsets.ModelViewSet):
+    queryset = Batch.objects.all()
     serializer_class = BatchSerializer
-
-    def get_queryset(self):
-        queryset = Batch.objects.all()
-        order_NR = self.request.query_params.get('order_NR', None)
-        if order_NR is not None:
-            queryset = queryset.filter(orderbatch__order_NR=order_NR)
-        return queryset
+    filterset_fields = ('orderbatch__order_NR',)
 
 
 class BatchRowViewSet(viewsets.ModelViewSet):
