@@ -31,14 +31,18 @@ export class OrderDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.order_NR = params.get('order_NR')!;
     });
-    if (this.order_NR != this.order.order_NR) {
+    if (this.order.order_NR != this.order_NR) {
       this.orderService.getOrder(this.order_NR).subscribe((data) => {
         this.order = data;
       });
     }
-    this.batchService.getBatches(this.order.order_NR).subscribe((data) => {
+    this.batchService.getBatches(this.order_NR).subscribe((data) => {
       this.batches = data;
     });
+  }
+
+  setBatch(batch: Batch) {
+    this.batchService.setBatch(batch);
   }
 
   back(): void {

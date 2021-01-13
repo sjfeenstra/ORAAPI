@@ -9,7 +9,8 @@
       <br>
       <h3>Aanwezige rollen</h3>
       <mat-divider></mat-divider>
-      <div *ngFor="let roll of rolls; index as roll_NR" [routerLink]="['/rollDetails/', roll.roll_NR]">
+      <div *ngFor="let roll of rolls; index as roll_NR" [routerLink]="['/rollDetails/', roll.roll_NR]"
+        (click)="setRoll(roll)">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>

@@ -18,7 +18,7 @@ export class BatchDetailsComponent implements OnInit {
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private rolService: RollService,
+    private rollService: RollService,
     private batchService: BatchService,
     private orderService: OrderService
   ) {
@@ -30,12 +30,18 @@ export class BatchDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.batch_NR = params.get('batch_NR')!;
     });
-    this.batchService.getBatch(this.batch_NR).subscribe((data) => {
-      this.batch = data;
-    });
-    this.rolService.getRols(this.batch_NR).subscribe((data) => {
+    if (this.batch.batch_NR != this.batch_NR) {
+      this.batchService.getBatch(this.batch_NR).subscribe((data) => {
+        this.batch = data;
+      });
+    }
+    this.rollService.getRols(this.batch_NR).subscribe((data) => {
       this.rolls = data;
     });
+  }
+
+  setRoll(roll: Roll) {
+    this.rollService.setRoll(roll);
   }
 
   back(): void {

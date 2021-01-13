@@ -9,7 +9,8 @@
       <br>
       <h4>Aanwezige batches</h4>
       <mat-divider></mat-divider>
-      <div *ngFor="let batch of batches; index as batch_NR" [routerLink]="['/batchDetails/', batch.batch_NR]">
+      <div *ngFor="let batch of batches; index as batch_NR" [routerLink]="['/batchDetails/', batch.batch_NR]"
+        (click)="setBatch(batch)">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>

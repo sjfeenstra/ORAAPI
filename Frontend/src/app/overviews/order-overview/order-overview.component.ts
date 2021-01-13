@@ -23,7 +23,9 @@ export class OrderOverviewComponent implements OnInit {
       this.orders = data;
     });
   }
-
+  setOrder(order: Order) {
+    this.orderService.setOrder(order);
+  }
   ngOnInit(): void {}
 
   back(): void {

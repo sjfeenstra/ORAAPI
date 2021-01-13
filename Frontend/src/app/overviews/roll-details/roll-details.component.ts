@@ -30,9 +30,11 @@ export class RollDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.roll_NR = params.get('roll_NR')!;
     });
-    this.rollService.getRol(this.roll_NR).subscribe((data) => {
-      this.roll = data;
-    });
+    if (this.roll.roll_NR != this.roll_NR) {
+      this.rollService.getRol(this.roll_NR).subscribe((data) => {
+        this.roll = data;
+      });
+    }
   }
 
   back(): void {

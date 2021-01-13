@@ -6,8 +6,8 @@ import { Data, Router } from '@angular/router';
 import { ApiService } from './api.service';
 
 export interface Roll {
-  roll_NR: number;
-  batch_NR: String;
+  roll_NR: string;
+  batch_NR: string;
   patient: string;
   packaging_code: string;
 }
@@ -25,11 +25,15 @@ export class RollService {
     private apiService: ApiService
   ) {
     this.roll = {
-      roll_NR: 0,
+      roll_NR: '',
       batch_NR: '',
       patient: '',
       packaging_code: '',
     };
+  }
+
+  setRoll(roll: Roll) {
+    this.roll = roll;
   }
 
   getRol(roll_NR: String) {

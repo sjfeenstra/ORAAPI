@@ -26,6 +26,10 @@ export class OrderService {
     this.order = { order_NR: '', institute: '', order_released: false };
   }
 
+  setOrder(order: Order) {
+    this.order = order;
+  }
+
   getOrder(order_NR: String) {
     return this.http
       .get(this.apiService.getApiUrl() + 'order/' + order_NR + '/')

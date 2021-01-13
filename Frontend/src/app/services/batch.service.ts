@@ -40,6 +40,10 @@ export class BatchService {
     };
   }
 
+  setBatch(batch: Batch) {
+    this.batch = batch;
+  }
+
   getBatch(batch_NR: String) {
     return this.http
       .get(this.apiService.getApiUrl() + 'batch/' + batch_NR + '/')
