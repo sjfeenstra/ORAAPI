@@ -23,9 +23,9 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './user/login/login.component';
 import { LogoutComponent } from './user/logout/logout.component';
 import { OrderOverviewComponent } from './overviews/order-overview/order-overview.component';
-import { BatchOverviewComponent } from './overviews/order-details/order-details.component';
-import { RolOverviewComponent } from './overviews/batch-details/batch-details.component';
-import { RolDataComponent } from './overviews/roll-details/roll-details.component';
+import { OrderDetailsComponent } from './overviews/order-details/order-details.component';
+import { BatchDetailsComponent } from './overviews/batch-details/batch-details.component';
+import { RollDetailsComponent } from './overviews/roll-details/roll-details.component';
 import { ControleLoggenComponent } from './controles/controle-loggen/controle-loggen.component';
 import { HomeComponent } from './home/home.component';
 import { VrijgifteComponent } from './controles/vrijgifte/vrijgifte.component';
@@ -39,9 +39,9 @@ import { from } from 'rxjs';
     LoginComponent,
     OrderOverviewComponent,
     LogoutComponent,
-    BatchOverviewComponent,
-    RolOverviewComponent,
-    RolDataComponent,
+    OrderDetailsComponent,
+    BatchDetailsComponent,
+    RollDetailsComponent,
     ControleLoggenComponent,
     HomeComponent,
     VrijgifteComponent,

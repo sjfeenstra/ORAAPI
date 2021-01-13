@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Controle, controles } from '../../models/controle';
-import { ControleService } from '../../services/controle.service';
-import { RolService, Rol } from '../../services/rol.service';
+import { RollService, Roll } from '../../services/roll.service';
 import { BatchService, Batch } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
 
@@ -18,8 +16,7 @@ export class OrderOverviewComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private controleService: ControleService,
-    private rolService: RolService,
+    private rollService: RollService,
     private batchService: BatchService,
     private orderService: OrderService
   ) {
@@ -35,11 +32,6 @@ export class OrderOverviewComponent implements OnInit {
     this.location.back();
   }
 
-  // checker(order: Order): Number {
-  //   return this.controleService
-  //     .getControles()
-  //     .filter((row) => row.controle === true).length;
-  // }
   selectOrder(order: Order): void {
     if (order != this.selectedOrder) {
       this.selectedOrder = order;

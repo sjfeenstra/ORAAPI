@@ -4,9 +4,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { observable, Observable, of } from 'rxjs';
 import { Data, Router } from '@angular/router';
-import { ApiService } from '../services/api.service';
+import { ApiService } from './api.service';
 
-export interface Rol {
+export interface Roll {
   roll_NR: number;
   batch_NR: String;
   patient: string;
@@ -16,8 +16,8 @@ export interface Rol {
 @Injectable({
   providedIn: 'root',
 })
-export class RolService {
-  rols: Array<Rol> = [];
+export class RollService {
+  rols: Array<Roll> = [];
 
   constructor(
     private http: HttpClient,
@@ -28,7 +28,7 @@ export class RolService {
   getRol(roll_NR: String) {
     return this.http.get(this.apiService.getApiUrl() + 'roll/' + roll_NR).pipe(
       map((result) => {
-        return result as Rol;
+        return result as Roll;
       }),
       catchError((err) => {
         return of(err);
@@ -39,7 +39,7 @@ export class RolService {
   getRols(batch_NR: string) {
     return this.http.get(this.apiService.getApiUrl() + 'roll/').pipe(
       map((result) => {
-        this.rols = result as Rol[];
+        this.rols = result as Roll[];
         return this.rols;
       }),
       catchError((err) => {

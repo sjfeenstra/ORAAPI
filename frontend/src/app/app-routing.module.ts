@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './user/login/login.component';
 import { LogoutComponent } from './user/logout/logout.component';
 import { OrderOverviewComponent } from './overviews/order-overview/order-overview.component';
-import { BatchOverviewComponent } from './overviews/order-details/order-details.component';
-import { RolOverviewComponent } from './overviews/batch-details/batch-details.component';
-import { RolDataComponent } from './overviews/roll-details/roll-details.component';
+import { OrderDetailsComponent } from './overviews/order-details/order-details.component';
+import { BatchDetailsComponent } from './overviews/batch-details/batch-details.component';
+import { RollDetailsComponent } from './overviews/roll-details/roll-details.component';
 import { ControleLoggenComponent } from './controles/controle-loggen/controle-loggen.component';
 import { HomeComponent } from './home/home.component';
 import { VrijgifteComponent } from './controles/vrijgifte/vrijgifte.component';
@@ -28,16 +28,16 @@ const routes: Routes = [
     component: OrderOverviewComponent,
   },
   {
-    path: 'batchOverview/:order_NR',
-    component: BatchOverviewComponent,
+    path: 'orderDetails/:order_NR',
+    component: OrderDetailsComponent,
   },
   {
-    path: 'rolOverview/:batch_NR',
-    component: RolOverviewComponent,
+    path: 'batchDetails/:batch_NR',
+    component: BatchDetailsComponent,
   },
   {
-    path: 'rolData/:roll_NR',
-    component: RolDataComponent,
+    path: 'rollDetails/:roll_NR',
+    component: RollDetailsComponent,
   },
   {
     path: 'controleLoggen',

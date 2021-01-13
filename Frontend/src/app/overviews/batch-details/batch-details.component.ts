@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Controle, controles } from '../../models/controle';
-import { ControleService } from '../../services/controle.service';
-import { RolService, Rol } from '../../services/rol.service';
+import { RollService, Roll } from '../../services/roll.service';
 import { BatchService, Batch } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
 
@@ -13,17 +11,16 @@ import { OrderService, Order } from '../../services/order.service';
   styleUrls: ['./batch-details.component.css'],
 })
 export class BatchDetailsComponent implements OnInit {
-  rols: any;
+  rolls: any;
   batch: any;
   batches: any;
   controles: any;
-  selectedRol: Rol;
+  selectedRol: Roll;
 
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private controleService: ControleService,
-    private rolService: RolService,
+    private rolService: RollService,
     private batchService: BatchService,
     private orderService: OrderService
   ) {
@@ -41,9 +38,8 @@ export class BatchDetailsComponent implements OnInit {
         this.batch = data;
       });
       this.rolService.getRols(params.get('batch_NR')!).subscribe((data) => {
-        this.rols = data;
+        this.rolls = data;
       });
-      this.controles = this.controleService.getControles();
     });
   }
 
@@ -51,12 +47,7 @@ export class BatchDetailsComponent implements OnInit {
     this.location.back();
   }
 
-  // checker(rol: Rol): Number {
-  //   return controles
-  //     .filter((row) => row.id === rol.roll_NR)
-  //     .filter((row) => row.controle === true).length;
-  // }
-  selectRol(rol: Rol): void {
+  selectRol(rol: Roll): void {
     if (rol != this.selectedRol) {
       this.selectedRol = rol;
     } else {

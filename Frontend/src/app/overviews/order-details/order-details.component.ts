@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Controle, controles } from '../../models/controle';
-import { ControleService } from '../../services/controle.service';
-import { RolService, Rol } from '../../services/rol.service';
+import { RollService, Roll } from '../../services/roll.service';
 import { BatchService, Batch } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
 import { from } from 'rxjs';
@@ -22,8 +20,7 @@ export class OrderDetailsComponent implements OnInit {
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private controleService: ControleService,
-    private rolService: RolService,
+    private rollService: RollService,
     private batchService: BatchService,
     private orderService: OrderService
   ) {
@@ -51,18 +48,11 @@ export class OrderDetailsComponent implements OnInit {
         .subscribe((data) => {
           this.batches = data;
         });
-    this.controles = this.controleService.getControles();
   }
 
   back(): void {
     this.location.back();
   }
-
-  // checker(batch: Batch): Number {
-  //   return controles
-  //     .filter((row) => row.id === batch.batch_NR)
-  //     .filter((row) => row.controle === true).length;
-  // }
 
   selectBatch(batch: Batch): void {
     if (batch != this.selectedBatch) {
