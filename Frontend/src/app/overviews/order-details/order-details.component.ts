@@ -9,11 +9,11 @@ import { OrderService, Order } from '../../services/order.service';
 import { from } from 'rxjs';
 
 @Component({
-  selector: 'app-batch-overview',
-  templateUrl: './batch-overview.component.html',
-  styleUrls: ['./batch-overview.component.css'],
+  selector: 'app-order-details',
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.css'],
 })
-export class BatchOverviewComponent implements OnInit {
+export class OrderDetailsComponent implements OnInit {
   batches: any;
   order: Order;
   controles: any;

@@ -8,11 +8,11 @@ import { BatchService, Batch } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
 
 @Component({
-  selector: 'app-rol-data',
-  templateUrl: './rol-data.component.html',
-  styleUrls: ['./rol-data.component.css'],
+  selector: 'app-roll-details',
+  templateUrl: './roll-details.component.html',
+  styleUrls: ['./roll-details.component.css'],
 })
-export class RolDataComponent implements OnInit {
+export class RollDetailsComponent implements OnInit {
   rol: Rol;
   controles: any;
 
