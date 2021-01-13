@@ -5,29 +5,15 @@
 
       <div *ngIf="batch">
         <h3>Batch {{batch.batch_NR}}</h3>
-        <div *ngFor="let controle of controles">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{controle.controleType}}
-              </mat-panel-title>
-              <mat-panel-description>
-                Bijzonderheid: {{controle.controle}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>Beschrijving: {{controle.controleDesc}}</p>
-            <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
-          </mat-expansion-panel>
-        </div>
       </div>
       <br>
       <h3>Aanwezige rollen</h3>
       <mat-divider></mat-divider>
-      <div *ngFor="let rol of rolls; index as roll_NR" [routerLink]="['/rollDetails/', rol.roll_NR]">
+      <div *ngFor="let roll of rolls; index as roll_NR" [routerLink]="['/rollDetails/', roll.roll_NR]">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Rol {{rol.roll_NR}}
+              Rol {{roll.roll_NR}}
             </mat-panel-title>
             <mat-panel-description>
               Aantal bijzondere controles

@@ -5,25 +5,11 @@
 
       <div *ngIf="order">
         <h3>Opdracht {{order.order_NR}}</h3>
-        <div *ngFor="let controle of controles">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{controle.controleType}}
-              </mat-panel-title>
-              <mat-panel-description>
-                Bijzonderheid: {{controle.controle}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>Beschrijving: {{controle.controleDesc}}</p>
-            <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
-          </mat-expansion-panel>
-        </div>
       </div>
       <br>
       <h4>Aanwezige batches</h4>
       <mat-divider></mat-divider>
-      <div *ngFor="let batch of batches; index as batch_NR" [routerLink]="['/rolOverview/', batch.batch_NR]">
+      <div *ngFor="let batch of batches; index as batch_NR" [routerLink]="['/batchDetails/', batch.batch_NR]">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>

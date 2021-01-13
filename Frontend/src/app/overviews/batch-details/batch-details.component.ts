@@ -11,11 +11,9 @@ import { OrderService, Order } from '../../services/order.service';
   styleUrls: ['./batch-details.component.css'],
 })
 export class BatchDetailsComponent implements OnInit {
-  rolls: any;
-  batch: any;
-  batches: any;
-  controles: any;
-  selectedRol: Roll;
+  rolls: Array<Roll> = [];
+  batch: Batch;
+  batch_NR: string;
 
   constructor(
     private location: Location,
@@ -24,39 +22,23 @@ export class BatchDetailsComponent implements OnInit {
     private batchService: BatchService,
     private orderService: OrderService
   ) {
-    this.selectedRol = {
-      roll_NR: 0,
-      batch_NR: '',
-      patient: '',
-      packaging_code: '',
-    };
+    this.batch = batchService.batch;
+    this.batch_NR = '';
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.batchService.getBatch(params.get('batch_NR')!).subscribe((data) => {
-        this.batch = data;
-      });
-      this.rolService.getRols(params.get('batch_NR')!).subscribe((data) => {
-        this.rolls = data;
-      });
+      this.batch_NR = params.get('batch_NR')!;
+    });
+    this.batchService.getBatch(this.batch_NR).subscribe((data) => {
+      this.batch = data;
+    });
+    this.rolService.getRols(this.batch_NR).subscribe((data) => {
+      this.rolls = data;
     });
   }
 
   back(): void {
     this.location.back();
-  }
-
-  selectRol(rol: Roll): void {
-    if (rol != this.selectedRol) {
-      this.selectedRol = rol;
-    } else {
-      this.selectedRol = {
-        roll_NR: 0,
-        batch_NR: "",
-        patient: '',
-        packaging_code: '',
-      };
-    }
   }
 }

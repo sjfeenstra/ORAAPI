@@ -12,7 +12,6 @@ import { OrderService, Order } from '../../services/order.service';
 })
 export class OrderOverviewComponent implements OnInit {
   orders: any;
-  selectedOrder: Order;
 
   constructor(
     private location: Location,
@@ -20,7 +19,6 @@ export class OrderOverviewComponent implements OnInit {
     private batchService: BatchService,
     private orderService: OrderService
   ) {
-    this.selectedOrder = { order_NR: '', institute: '', order_released: false };
     this.orderService.getOrders().subscribe((data) => {
       this.orders = data;
     });
@@ -30,17 +28,5 @@ export class OrderOverviewComponent implements OnInit {
 
   back(): void {
     this.location.back();
-  }
-
-  selectOrder(order: Order): void {
-    if (order != this.selectedOrder) {
-      this.selectedOrder = order;
-    } else {
-      this.selectedOrder = {
-        order_NR: '',
-        institute: '',
-        order_released: false,
-      };
-    }
   }
 }

@@ -4,7 +4,6 @@ import { catchError, map } from 'rxjs/operators';
 import { observable, Observable, of } from 'rxjs';
 import { Data, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { Controle, controles } from '../models/controle';
 
 export interface Batch {
   batch_NR: string;
@@ -22,19 +21,32 @@ export interface Batch {
 })
 export class BatchService {
   batches: Array<Batch> = [];
+  batch: Batch;
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private apiService: ApiService
-  ) {}
+  ) {
+    this.batch = {
+      batch_NR: '',
+      start_datetime: new Date(),
+      end_datetime: new Date(),
+      total_NR_bags: 0,
+      bags_checked: 0,
+      bags_rejected: 0,
+      NR_to_double_check: 0,
+      double_checked: 0,
+    };
+  }
 
   getBatch(batch_NR: String) {
     return this.http
       .get(this.apiService.getApiUrl() + 'batch/' + batch_NR + '/')
       .pipe(
         map((result) => {
-          return result as Batch;
+          this.batch = result as Batch;
+          return this.batch;
         }),
         catchError((err) => {
           return of(err);

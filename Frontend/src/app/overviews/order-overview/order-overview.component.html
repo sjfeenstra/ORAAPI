@@ -4,7 +4,7 @@
       <h1>Opdrachten</h1>
       <h3>Opdrachtenoverzicht</h3>
       <mat-divider></mat-divider>
-      <div *ngFor="let order of orders; index as order_NR" [routerLink]="['/batchOverview/', order.order_NR]">
+      <div *ngFor="let order of orders; index as order_NR" [routerLink]="['/orderDetails/', order.order_NR]">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>

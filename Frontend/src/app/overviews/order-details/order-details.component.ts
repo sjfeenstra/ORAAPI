@@ -14,8 +14,7 @@ import { from } from 'rxjs';
 export class OrderDetailsComponent implements OnInit {
   batches: any;
   order: Order;
-  controles: any;
-  selectedBatch: Batch;
+  order_NR: string;
 
   constructor(
     private location: Location,
@@ -24,50 +23,25 @@ export class OrderDetailsComponent implements OnInit {
     private batchService: BatchService,
     private orderService: OrderService
   ) {
-    this.selectedBatch = {
-      batch_NR: '',
-      start_datetime: new Date(),
-      end_datetime: new Date(),
-      total_NR_bags: 0,
-      bags_checked: 0,
-      bags_rejected: 0,
-      NR_to_double_check: 0,
-      double_checked: 0,
-    };
-    this.order = { order_NR: '', institute: '', order_released: false };
+    this.order = this.orderService.order;
+    this.order_NR = '';
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.orderService.getOrder(params.get('order_NR')!).subscribe((data) => {
+      this.order_NR = params.get('order_NR')!;
+    });
+    if (this.order_NR != this.order.order_NR) {
+      this.orderService.getOrder(this.order_NR).subscribe((data) => {
         this.order = data;
       });
+    }
+    this.batchService.getBatches(this.order.order_NR).subscribe((data) => {
+      this.batches = data;
     });
-    this.batchService
-        .getBatches(this.order.order_NR)
-        .subscribe((data) => {
-          this.batches = data;
-        });
   }
 
   back(): void {
     this.location.back();
-  }
-
-  selectBatch(batch: Batch): void {
-    if (batch != this.selectedBatch) {
-      this.selectedBatch = batch;
-    } else {
-      this.selectedBatch = {
-        batch_NR: '',
-        start_datetime: new Date(),
-        end_datetime: new Date(),
-        total_NR_bags: 0,
-        bags_checked: 0,
-        bags_rejected: 0,
-        NR_to_double_check: 0,
-        double_checked: 0,
-      };
-    }
   }
 }

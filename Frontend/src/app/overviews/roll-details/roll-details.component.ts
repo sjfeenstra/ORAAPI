@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Controle, controles } from '../../models/controle';
 import { RollService, Roll } from '../../services/roll.service';
 import { BatchService, Batch } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
@@ -14,6 +13,7 @@ import { OrderService, Order } from '../../services/order.service';
 export class RollDetailsComponent implements OnInit {
   roll: Roll;
   controles: any;
+  roll_NR: string;
 
   constructor(
     private location: Location,
@@ -22,19 +22,16 @@ export class RollDetailsComponent implements OnInit {
     private batchService: BatchService,
     private orderService: OrderService
   ) {
-    this.roll = {
-      roll_NR: -1,
-      batch_NR:  "",
-      patient: "",
-      packaging_code: "",
-    }
+    this.roll = rollService.roll;
+    this.roll_NR = '';
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.rollService.getRol(params.get('roll_NR')!).subscribe((data) => {
-        this.roll = data;
-      });
+      this.roll_NR = params.get('roll_NR')!;
+    });
+    this.rollService.getRol(this.roll_NR).subscribe((data) => {
+      this.roll = data;
     });
   }
 
