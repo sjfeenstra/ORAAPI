@@ -65,11 +65,13 @@ class BatchChecksViewSet(viewsets.ModelViewSet):
 class RollViewSet(viewsets.ModelViewSet):
     queryset = Roll.objects.all()
     serializer_class = RollSerializer
+    filterset_fields = ('batch_NR',)
 
 
 class BagViewSet(viewsets.ModelViewSet):
     queryset = Bag.objects.all()
     serializer_class = BagSerializer
+    filterset_fields = ('roll_NR',)
 
 
 class MissingPicturesViewSet(viewsets.ModelViewSet):
