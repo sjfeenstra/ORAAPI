@@ -26,7 +26,6 @@ class Migration(migrations.Migration):
                 ('machine_ID', models.CharField(max_length=10)),
                 ('packaging_code', models.IntegerField()),
                 ('DB', models.CharField(max_length=40)),
-                ('week', models.IntegerField()),
                 ('leave_datetime', models.DateTimeField()),
                 ('forward_datetime', models.DateTimeField()),
                 ('remarks_end_control', models.CharField(blank=True, max_length=200, null=True)),

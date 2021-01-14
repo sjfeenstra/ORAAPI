@@ -28,7 +28,6 @@ class Batch(models.Model):
     packaging_code = models.IntegerField()
     # bestand doorsturen, de naam van ingelogde medewerker wordt hier gelogd.
     DB = models.CharField(max_length=NAME_LENGTH)
-    week = models.IntegerField()
     leave_datetime = models.DateTimeField()
     forward_datetime = models.DateTimeField()
     remarks_end_control = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
