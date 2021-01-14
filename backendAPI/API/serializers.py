@@ -40,7 +40,7 @@ class BatchRowSerializer(serializers.ModelSerializer):
 class PillsToBeAddedSerializer(serializers.ModelSerializer):
     class Meta:
         model = PillsToBeAdded
-        fields = ['pil_ID', 'medication_name', 'free_text']
+        fields = ['bag_NR','pil_ID', 'medication_name', 'free_text']
 
 
 class OrderBatchSerializer(serializers.ModelSerializer):

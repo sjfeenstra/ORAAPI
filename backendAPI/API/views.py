@@ -45,11 +45,13 @@ class BatchViewSet(viewsets.ModelViewSet):
 class BatchRowViewSet(viewsets.ModelViewSet):
     queryset = BatchRow.objects.all()
     serializer_class = BatchRowSerializer
+    filterset_fields = ('batch_NR',)
 
 
 class PillsToBeAddedViewSet(viewsets.ModelViewSet):
     queryset = PillsToBeAdded.objects.all()
     serializer_class = PillsToBeAddedSerializer
+    filterset_fields = ('bag_NR',)
 
 
 class OrderBatchViewSet(viewsets.ModelViewSet):
@@ -77,8 +79,10 @@ class BagViewSet(viewsets.ModelViewSet):
 class MissingPicturesViewSet(viewsets.ModelViewSet):
     queryset = MissingPictures.objects.all()
     serializer_class = MissingPicturesSerializer
+    filterset_fields = ('bag_NR',)
 
 
 class ErrorViewSet(viewsets.ModelViewSet):
     queryset = Error.objects.all()
     serializer_class = ErrorSerializer
+    filterset_fields = ('bag_NR',)
