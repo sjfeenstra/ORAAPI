@@ -25,7 +25,7 @@ const routes: Routes = [
     component: LogoutComponent,
   },
   {
-    path: 'orderOverview',
+    path: 'orderOverview/:history',
     component: OrderOverviewComponent,
   },
   {

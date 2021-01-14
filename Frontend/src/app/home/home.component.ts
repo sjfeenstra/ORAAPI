@@ -9,7 +9,7 @@ export class HomeComponent implements OnInit {
   medewerker: string;
 
   constructor() {
-    this.medewerker = 'Medewerker';
+    this.medewerker = 'Apotheker';
   }
 
   ngOnInit(): void {}

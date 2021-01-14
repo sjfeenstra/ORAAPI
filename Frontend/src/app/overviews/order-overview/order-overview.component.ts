@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RollService, Roll } from '../../services/roll.service';
 import { BatchService, Batch } from '../../services/batch.service';
@@ -11,22 +11,29 @@ import { OrderService, Order } from '../../services/order.service';
   styleUrls: ['./order-overview.component.css'],
 })
 export class OrderOverviewComponent implements OnInit {
-  orders: any;
+  orders: Order[] = [];
+  history: string = 'False'
 
   constructor(
     private location: Location,
+    private route: ActivatedRoute,
     private rollService: RollService,
     private batchService: BatchService,
     private orderService: OrderService
-  ) {
-    this.orderService.getOrders().subscribe((data) => {
-      this.orders = data;
-    });
-  }
+  ) {}
+
   setOrder(order: Order) {
     this.orderService.setOrder(order);
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.history = params.get('history')!;
+    });
+    this.orderService.getOrders('?order_released=' + this.history).subscribe((data) => {
+      this.orders = data;
+    });
+  }
 
   back(): void {
     this.location.back();
