@@ -16,6 +16,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -66,6 +68,8 @@ import { from } from 'rxjs';
     MatIconModule,
     MatExpansionModule,
     FormsModule,
+    MatGridListModule,
+    MatTabsModule,
   ],
   exports: [MatInputModule],
   providers: [],

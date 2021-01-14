@@ -9,7 +9,6 @@ export interface Roll {
   roll_NR: string;
   batch_NR: string;
   patient: string;
-  packaging_code: string;
 }
 
 @Injectable({
@@ -28,7 +27,6 @@ export class RollService {
       roll_NR: '',
       batch_NR: '',
       patient: '',
-      packaging_code: '',
     };
   }
 

@@ -7,10 +7,20 @@ import { ApiService } from '../services/api.service';
 
 export interface Batch {
   batch_NR: string;
+  machine_ID: string;
+  packaging_code: number;
+  DB: string;
+  leave_datetime: Date;
+  forward_datetime: Date;
+  remarks_end_control: string;
+  checked_by: string;
   start_datetime: Date;
   end_datetime: Date;
+  inspector: string;
+  batch_started: Date;
   total_NR_bags: number;
   bags_checked: number;
+  total_NR_patients: number;
   bags_rejected: number;
   NR_to_double_check: number;
   double_checked: number;
@@ -29,14 +39,24 @@ export class BatchService {
     private apiService: ApiService
   ) {
     this.batch = {
-      batch_NR: '',
-      start_datetime: new Date(),
-      end_datetime: new Date(),
-      total_NR_bags: 0,
-      bags_checked: 0,
-      bags_rejected: 0,
-      NR_to_double_check: 0,
-      double_checked: 0,
+        batch_NR: '',
+        machine_ID: '',
+        packaging_code: -1,
+        DB: '',
+        leave_datetime: new Date,
+        forward_datetime: new Date,
+        remarks_end_control: '',
+        checked_by: '',
+        start_datetime: new Date,
+        end_datetime: new Date,
+        inspector: '',
+        batch_started: new Date,
+        total_NR_bags: -1,
+        bags_checked: -1,
+        total_NR_patients: -1,
+        bags_rejected: -1,
+        NR_to_double_check: -1,
+        double_checked: -1
     };
   }
 

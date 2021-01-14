@@ -2,26 +2,38 @@
   <div class="row py-lg-5 justify-content-center">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1>Rol Gegevens</h1>
-
-      <div *ngIf="roll">
-        <h3>MediRol {{roll.roll_NR}}</h3>
-        <div *ngFor="let controle of controles">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{controle.controleType}}
-              </mat-panel-title>
-              <mat-panel-description>
-                Bijzonderheid: {{controle.controle}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>Beschrijving: {{controle.controleDesc}}</p>
-            <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
-          </mat-expansion-panel>
-        </div>
-      </div>
+      <h3>MediRol {{roll.roll_NR}}</h3>
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Details">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Patient:</td>
+                <td>{{roll.patient}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Aanwezige zakjes">
+        </mat-tab>
+        <mat-tab label="Controles">
+          <div *ngFor="let controle of controles">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{controle.controleType}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Bijzonderheid: {{controle.controle}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>Beschrijving: {{controle.controleDesc}}</p>
+              <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
+            </mat-expansion-panel>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
       <br>
-      <mat-divider></mat-divider>
       <button mat-raised-button color="primary" (click)="back()">Terug naar de roloverzicht</button>
       <button mat-raised-button color="primary" disabled>Foto's bekijken</button>
       <button mat-raised-button color="primary" (click)="back()">Opdracht Markeren</button>

@@ -2,26 +2,35 @@
   <div class="row py-lg-5 justify-content-center">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1>Opdracht gegevens</h1>
-
-      <div *ngIf="order">
-        <h3>Opdracht {{order.order_NR}}</h3>
-      </div>
-      <br>
-      <h4>Aanwezige batches</h4>
-      <mat-divider></mat-divider>
-      <div *ngFor="let batch of batches; index as batch_NR" [routerLink]="['/batchDetails/', batch.batch_NR]"
-        (click)="setBatch(batch)">
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Batch {{batch.batch_NR}}
-            </mat-panel-title>
-            <mat-panel-description>
-              Aantal bijzondere controles
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-        </mat-expansion-panel>
-      </div>
+      <h2>Opdracht {{order.order_NR}}</h2>
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Details">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Instituut:</td>
+                <td>{{order.institute}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Aanwezige batches">
+          <div *ngFor="let batch of batches; index as batch_NR" [routerLink]="['/batchDetails/', batch.batch_NR]"
+            (click)="setBatch(batch)">
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Batch {{batch.batch_NR}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Aantal bijzondere controles
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          </div>
+        </mat-tab>
+        <mat-tab label="Controles"></mat-tab>
+      </mat-tab-group>
       <br>
       <button mat-raised-button color="primary" (click)="back()">Terug naar de opdrachtoverzicht</button>
     </div>
