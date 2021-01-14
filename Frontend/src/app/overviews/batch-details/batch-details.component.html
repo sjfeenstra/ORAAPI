@@ -5,6 +5,51 @@
       <h2>Batch {{batch.batch_NR}}</h2>
       <mat-tab-group dynamicHeight>
         <mat-tab label="Details">
+          <div *ngFor="let batchRow of batchRows">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Batch NR: {{batchRow.batch_NR}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Afdeling: {{batchRow.department}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>Split NR:</td>
+                    <td>{{batchRow.split_NR}}</td>
+                  </tr>
+                  <tr>
+                    <td>Start Datum:</td>
+                    <td>{{transformdatetime(batchRow.start_datetime)}}</td>
+                  </tr>
+                  <tr>
+                    <td>Eind Datum:</td>
+                    <td>{{transformdatetime(batchRow.end_datetime)}} </td>
+                  </tr>
+                  <tr>
+                    <td>Aantal Patienten:</td>
+                    <td>{{batchRow.NR_patients}}</td>
+                  </tr>
+                  <tr>
+                    <td>Aantal Zakjes:</td>
+                    <td>{{batchRow.NR_bags}}</td>
+                  </tr>
+                  <tr>
+                    <td>MC/CD:</td>
+                    <td>{{batchRow.MC_CD}}</td>
+                  </tr>
+                  <tr>
+                    <td>Bijzonderheden:</td>
+                    <td>{{batchRow.remarks}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+          </div>
+          <br>
           <table class="table">
             <tbody>
               <tr>

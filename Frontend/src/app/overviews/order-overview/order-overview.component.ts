@@ -12,7 +12,7 @@ import { OrderService, Order } from '../../services/order.service';
 })
 export class OrderOverviewComponent implements OnInit {
   orders: Order[] = [];
-  history: string = 'False'
+  history: string = 'False';
 
   constructor(
     private location: Location,
@@ -30,9 +30,11 @@ export class OrderOverviewComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.history = params.get('history')!;
     });
-    this.orderService.getOrders('?order_released=' + this.history).subscribe((data) => {
-      this.orders = data;
-    });
+    this.orderService
+      .getOrders('?order_released=' + this.history)
+      .subscribe((data) => {
+        this.orders = data;
+      });
   }
 
   back(): void {

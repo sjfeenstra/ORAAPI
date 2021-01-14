@@ -11,11 +11,40 @@ export interface Bag {
   bag_type: string;
 }
 
+export interface Error {
+  bag_NR: string;
+  error_NR: number;
+  error: string;
+  patient: string;
+  error_desc: string;
+  free_text: string;
+  error_datetime: Date;
+  corrected_by: string;
+  checked_by: string;
+}
+
+export interface MissingPictures {
+  bag_NR: string;
+  patient: string;
+  corrected_by: string;
+  checked_by: string;
+}
+
+export interface MissingPills {
+  bag_NR: string;
+  pil_ID: number;
+  medication_name: string;
+  free_text: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class BagService {
-  bags: Array<Bag> = [];
+  bags: Bag[] = [];
+  errors: Error[] = [];
+  missingPictures: MissingPictures[] = [];
+  missingPills: MissingPills[] = [];
   bag: Bag;
 
   constructor(
@@ -30,8 +59,7 @@ export class BagService {
     };
   }
 
-
-  getBag(bag_NR: String) {
+  getBag(bag_NR: string) {
     return this.http
       .get(this.apiService.getApiUrl() + 'bag/' + bag_NR + '/')
       .pipe(
@@ -52,6 +80,48 @@ export class BagService {
         map((result) => {
           this.bags = result as Bag[];
           return this.bags;
+        }),
+        catchError((err) => {
+          return of(err);
+        })
+      );
+  }
+
+  getErrors(bag_NR: string) {
+    return this.http
+      .get(this.apiService.getApiUrl() + 'error/?bag_NR=' + bag_NR)
+      .pipe(
+        map((result) => {
+          this.errors = result as Error[];
+          return this.errors;
+        }),
+        catchError((err) => {
+          return of(err);
+        })
+      );
+  }
+
+  getMissingPictures(bag_NR: string) {
+    return this.http
+      .get(this.apiService.getApiUrl() + 'missingpictures/?bag_NR=' + bag_NR)
+      .pipe(
+        map((result) => {
+          this.missingPictures = result as MissingPictures[];
+          return this.missingPictures;
+        }),
+        catchError((err) => {
+          return of(err);
+        })
+      );
+  }
+
+  getMissingPills(bag_NR: string) {
+    return this.http
+      .get(this.apiService.getApiUrl() + 'pillstoadd/?bag_NR=' + bag_NR)
+      .pipe(
+        map((result) => {
+          this.missingPills = result as MissingPills[];
+          return this.missingPills;
         }),
         catchError((err) => {
           return of(err);

@@ -12,7 +12,7 @@ import { BagService, Bag } from '../../services/bag.service';
   styleUrls: ['./roll-details.component.css'],
 })
 export class RollDetailsComponent implements OnInit {
-  bags: Bag[] = []
+  bags: Bag[] = [];
   roll: Roll;
   controles: any;
   roll_NR: string;
@@ -23,14 +23,14 @@ export class RollDetailsComponent implements OnInit {
     private rollService: RollService,
     private batchService: BatchService,
     private orderService: OrderService,
-    private bagService: BagService,
+    private bagService: BagService
   ) {
     this.roll = rollService.roll;
     this.roll_NR = '';
   }
 
-  setRoll(roll: Roll){
-    this.rollService.setRoll(roll)
+  setRoll(roll: Roll) {
+    this.rollService.setRoll(roll);
   }
 
   ngOnInit(): void {

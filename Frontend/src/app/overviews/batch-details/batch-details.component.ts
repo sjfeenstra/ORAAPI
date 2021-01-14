@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { formatDate, Location } from '@angular/common';
 import { RollService, Roll } from '../../services/roll.service';
-import { BatchService, Batch } from '../../services/batch.service';
+import { BatchService, Batch, BatchRow } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
 
 @Component({
@@ -11,9 +11,21 @@ import { OrderService, Order } from '../../services/order.service';
   styleUrls: ['./batch-details.component.css'],
 })
 export class BatchDetailsComponent implements OnInit {
-  rolls: Array<Roll> = [];
+  rolls: Roll[] = [];
+  batchRows: BatchRow[] = [];
   batch: Batch;
   batch_NR: string;
+
+  displayedColumns: string[] = [
+    'Afdeling',
+    'Split NR',
+    'Start Datum',
+    'Eind Datum',
+    'Aantal Patienten',
+    'Aantal Zakjes',
+    'MC/CD',
+    'Bijzonderheden',
+  ];
 
   constructor(
     private location: Location,
@@ -35,9 +47,16 @@ export class BatchDetailsComponent implements OnInit {
         this.batch = data;
       });
     }
+    this.batchService.getBatchDetails(this.batch_NR).subscribe((data) => {
+      this.batchRows = data;
+    });
     this.rollService.getRols(this.batch_NR).subscribe((data) => {
       this.rolls = data;
     });
+  }
+
+  transformdatetime(date: Date) {
+    return formatDate(date, 'yyyy-MM-dd', 'en-US');
   }
 
   setRoll(roll: Roll) {

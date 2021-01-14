@@ -30,7 +30,7 @@ export class OrderService {
     this.order = order;
   }
 
-  getOrder(order_NR: String) {
+  getOrder(order_NR: string) {
     return this.http
       .get(this.apiService.getApiUrl() + 'order/' + order_NR + '/')
       .pipe(

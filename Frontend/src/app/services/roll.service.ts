@@ -34,7 +34,7 @@ export class RollService {
     this.roll = roll;
   }
 
-  getRol(roll_NR: String) {
+  getRol(roll_NR: string) {
     return this.http
       .get(this.apiService.getApiUrl() + 'roll/' + roll_NR + '/')
       .pipe(
