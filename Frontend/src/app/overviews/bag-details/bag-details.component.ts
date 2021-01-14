@@ -7,15 +7,14 @@ import { OrderService, Order } from '../../services/order.service';
 import { BagService, Bag } from '../../services/bag.service';
 
 @Component({
-  selector: 'app-roll-details',
-  templateUrl: './roll-details.component.html',
-  styleUrls: ['./roll-details.component.css'],
+  selector: 'app-bag-details',
+  templateUrl: './bag-details.component.html',
+  styleUrls: ['./bag-details.component.css']
 })
-export class RollDetailsComponent implements OnInit {
-  bags: Bag[] = []
-  roll: Roll;
+export class BagDetailsComponent implements OnInit {
+  bag: Bag;
   controles: any;
-  roll_NR: string;
+  bag_NR: string;
 
   constructor(
     private location: Location,
@@ -25,29 +24,23 @@ export class RollDetailsComponent implements OnInit {
     private orderService: OrderService,
     private bagService: BagService,
   ) {
-    this.roll = rollService.roll;
-    this.roll_NR = '';
-  }
-
-  setRoll(roll: Roll){
-    this.rollService.setRoll(roll)
+    this.bag = bagService.bag;
+    this.bag_NR = '';
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.roll_NR = params.get('roll_NR')!;
+      this.bag_NR = params.get('bag_NR')!;
     });
-    if (this.roll.roll_NR != this.roll_NR) {
-      this.rollService.getRol(this.roll_NR).subscribe((data) => {
-        this.roll = data;
+    if (this.bag.bag_NR != this.bag_NR) {
+      this.bagService.getBag(this.bag_NR).subscribe((data) => {
+        this.bag = data;
       });
     }
-    this.bagService.getBags(this.roll_NR).subscribe((data) => {
-      this.bags = data;
-    });
   }
 
   back(): void {
     this.location.back();
   }
+
 }

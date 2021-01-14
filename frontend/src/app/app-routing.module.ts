@@ -9,6 +9,7 @@ import { RollDetailsComponent } from './overviews/roll-details/roll-details.comp
 import { ControleLoggenComponent } from './controles/controle-loggen/controle-loggen.component';
 import { HomeComponent } from './home/home.component';
 import { VrijgifteComponent } from './controles/vrijgifte/vrijgifte.component';
+import { BagDetailsComponent } from './overviews/bag-details/bag-details.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'rollDetails/:roll_NR',
     component: RollDetailsComponent,
+  },
+  {
+    path: 'bagDetails/:bag_NR',
+    component: BagDetailsComponent,
   },
   {
     path: 'controleLoggen',

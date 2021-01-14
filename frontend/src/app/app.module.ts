@@ -33,6 +33,7 @@ import { HomeComponent } from './home/home.component';
 import { VrijgifteComponent } from './controles/vrijgifte/vrijgifte.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { from } from 'rxjs';
+import { BagDetailsComponent } from './overviews/bag-details/bag-details.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { from } from 'rxjs';
     ControleLoggenComponent,
     HomeComponent,
     VrijgifteComponent,
+    BagDetailsComponent,
   ],
   imports: [
     HttpClientModule,
