@@ -90,4 +90,4 @@ class ErrorViewSet(viewsets.ModelViewSet):
 class ChecksViewSet(viewsets.ModelViewSet):
     queryset = Check.objects.all()
     serializer_class = CheckSerializer
-    filterset_fields = ('order_NR', 'bag_NR', 'roll_NR', 'bag_NR',)
+    filterset_fields = ('order_NR', 'batch_NR', 'roll_NR', 'bag_NR',)
