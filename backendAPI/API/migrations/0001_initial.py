@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('order_NR', models.IntegerField(primary_key=True,serialize=False)),
                 ('order_released', models.BooleanField()),
-                ('institute', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='API.institute')),
+                ('institute', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='API.institute')),
             ],
         ),
         migrations.CreateModel(
