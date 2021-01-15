@@ -48,9 +48,11 @@ export class RollDetailsComponent implements OnInit {
     this.bagService.getBags(this.roll_NR).subscribe((data) => {
       this.bags = data;
     });
-    this.controleService.getChecks('?roll_NR='+this.roll_NR).subscribe((data) => {
-      this.checks = data;
-    });
+    this.controleService
+      .getChecks('?roll_NR=' + this.roll_NR)
+      .subscribe((data) => {
+        this.checks = data;
+      });
   }
 
   back(): void {

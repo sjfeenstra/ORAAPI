@@ -42,9 +42,11 @@ export class OrderDetailsComponent implements OnInit {
     this.batchService.getBatches(this.order_NR).subscribe((data) => {
       this.batches = data;
     });
-    this.controleService.getChecks('?order_NR='+this.order_NR).subscribe((data) => {
-      this.checks = data;
-    });
+    this.controleService
+      .getChecks('?order_NR=' + this.order_NR)
+      .subscribe((data) => {
+        this.checks = data;
+      });
   }
 
   setBatch(batch: Batch) {

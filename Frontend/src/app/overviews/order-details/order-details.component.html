@@ -30,30 +30,30 @@
           </div>
         </mat-tab>
         <mat-tab label="Controles">
-        <div *ngFor="let check of checks">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{check.check_type}}
-              </mat-panel-title>
-              <mat-panel-description>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>Beschrijving:</td>
-                  <td>{{check.check_remarks}}</td>
-                </tr>
-                <tr>
-                  <td>Medewerker:</td>
-                  <td>{{check.checked_by}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </mat-expansion-panel>
-        </div>
-      </mat-tab>
+          <div *ngFor="let check of checks">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{check.check_type}}
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>Beschrijving:</td>
+                    <td>{{check.check_remarks}}</td>
+                  </tr>
+                  <tr>
+                    <td>Medewerker:</td>
+                    <td>{{check.checked_by}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+          </div>
+        </mat-tab>
       </mat-tab-group>
       <br>
       <button mat-raised-button color="primary" (click)="back()">Terug naar de opdrachtoverzicht</button>

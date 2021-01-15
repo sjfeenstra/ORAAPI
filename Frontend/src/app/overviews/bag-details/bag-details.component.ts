@@ -60,9 +60,11 @@ export class BagDetailsComponent implements OnInit {
     this.bagService.getMissingPills(this.bag_NR).subscribe((data) => {
       this.missingPills = data;
     });
-    this.controleService.getChecks('?bag_NR='+this.bag_NR).subscribe((data) => {
-      this.checks = data;
-    });
+    this.controleService
+      .getChecks('?bag_NR=' + this.bag_NR)
+      .subscribe((data) => {
+        this.checks = data;
+      });
   }
 
   back(): void {

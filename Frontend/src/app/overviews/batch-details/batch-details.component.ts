@@ -45,9 +45,11 @@ export class BatchDetailsComponent implements OnInit {
     this.rollService.getRols(this.batch_NR).subscribe((data) => {
       this.rolls = data;
     });
-    this.controleService.getChecks('?batch_NR='+this.batch_NR).subscribe((data) => {
-      this.checks = data;
-    });
+    this.controleService
+      .getChecks('?batch_NR=' + this.batch_NR)
+      .subscribe((data) => {
+        this.checks = data;
+      });
   }
 
   transformdatetime(date: Date) {

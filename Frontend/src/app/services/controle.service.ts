@@ -16,17 +16,16 @@ export interface Check {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ControleService {
-checks: Check[] = []
+  checks: Check[] = [];
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private apiService: ApiService
-  ) { }
-
+  ) {}
 
   getChecks(optionalParameter: string = '') {
     return this.http
@@ -40,5 +39,16 @@ checks: Check[] = []
           return of(err);
         })
       );
+  }
+  createCheck(check: Check) {
+    return this.http.post(this.apiService.getApiUrl() + 'check/', check).pipe(
+      map((result) => {
+        this.checks = result as Check[];
+        return this.checks;
+      }),
+      catchError((err) => {
+        return of(err);
+      })
+    );
   }
 }

@@ -26,11 +26,16 @@
       </mat-form-field>
       <mat-divider></mat-divider>
       <mat-form-field appearance="standard">
-        <mat-label>Commentaar</mat-label>
-        <textarea matInput rows="8" placeholder="Ex. Het zakje was......"></textarea>
+        <mat-label>ID</mat-label>
+        <textarea [(ngModel)]="id" matInput placeholder="25"></textarea>
       </mat-form-field>
       <mat-divider></mat-divider>
-      <button mat-raised-button color="primary" (click)="back()">{{controle}} loggen</button>
+      <mat-form-field appearance="standard">
+        <mat-label>Commentaar</mat-label>
+        <textarea [(ngModel)]="remarks" matInput rows="8" placeholder="Ex. Het zakje was......"></textarea>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <button mat-raised-button color="primary" (click)="logControle()">{{controle}} loggen</button>
     </div>
   </div>
 </section>
