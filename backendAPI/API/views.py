@@ -1,10 +1,10 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 
-from API.models import Institute, Department, Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, \
+from API.models import Institute, Department, Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, Roll, \
     Bag, MissingPictures, Error, Check
 from API.serializers import InstituteSerializer, DepartmentSerializer, OrderSerializer, BatchSerializer, \
-    BatchRowSerializer, PillsToBeAddedSerializer, OrderBatchSerializer, BatchChecksSerializer, RollSerializer, \
+    BatchRowSerializer, PillsToBeAddedSerializer, OrderBatchSerializer, RollSerializer, \
     BagSerializer, MissingPicturesSerializer, ErrorSerializer, CheckSerializer
 
 
@@ -57,12 +57,6 @@ class PillsToBeAddedViewSet(viewsets.ModelViewSet):
 class OrderBatchViewSet(viewsets.ModelViewSet):
     queryset = OrderBatch.objects.all()
     serializer_class = OrderBatchSerializer
-
-
-class BatchChecksViewSet(viewsets.ModelViewSet):
-    queryset = BatchChecks.objects.all()
-    serializer_class = BatchChecksSerializer
-
 
 class RollViewSet(viewsets.ModelViewSet):
     queryset = Roll.objects.all()

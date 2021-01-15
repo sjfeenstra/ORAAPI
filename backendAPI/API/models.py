@@ -74,26 +74,6 @@ class OrderBatch(models.Model):
     batch_NR = models.ForeignKey(Batch, on_delete=models.RESTRICT)
 
 
-class BatchChecks(models.Model):
-    batch_nr = models.OneToOneField(Batch, on_delete=models.CASCADE)
-    PSS_check_by = models.CharField(max_length=NAME_LENGTH)
-    PSS_check_remarks = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
-    tray_fill_by = models.CharField(max_length=NAME_LENGTH)
-    tray_check_by = models.CharField(max_length=NAME_LENGTH)
-    tray_fill_check_remarks = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
-    schouw_by = models.CharField(max_length=NAME_LENGTH)
-    schouw_remarks = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)
-    batch_validation = models.BooleanField()
-    batch_validation_by = models.CharField(max_length=NAME_LENGTH)
-    cargo_office_by = models.CharField(max_length=NAME_LENGTH)
-    packaging_by = models.CharField(max_length=NAME_LENGTH)
-    control_seal_by = models.CharField(max_length=NAME_LENGTH)
-    end_check_by = models.CharField(max_length=NAME_LENGTH)
-    internal_error = models.BooleanField()
-    empty_bags_delivered = models.BooleanField()
-    other_errors = models.BooleanField()
-
-
 class Roll(models.Model):
     roll_NR = models.IntegerField(primary_key=True)
     batch_NR = models.ForeignKey(Batch, on_delete=models.CASCADE)

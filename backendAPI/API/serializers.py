@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from API.models import Institute, Department, Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, \
+from API.models import Institute, Department, Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, Roll, \
     Bag, MissingPictures, Error, Check
 
 
@@ -47,15 +47,6 @@ class OrderBatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderBatch
         fields = ['order_NR', 'batch_NR']
-
-
-class BatchChecksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BatchChecks
-        fields = ['batch_nr', 'PSS_check_by', 'PSS_check_remarks', 'tray_fill_by', 'tray_check_by',
-                  'tray_fill_check_remarks', 'schouw_by', 'schouw_remarks',
-                  'batch_validation', 'batch_validation_by', 'cargo_office_by', 'packaging_by', 'control_seal_by',
-                  'end_check_by', 'internal_error', 'empty_bags_delivered', 'other_errors']
 
 
 class RollSerializer(serializers.ModelSerializer):
