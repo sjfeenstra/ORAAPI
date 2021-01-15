@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { RollService, Roll } from '../../services/roll.service';
 import { BatchService, Batch } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
+import { ControleService, Check } from '../../services/controle.service';
 import { from } from 'rxjs';
 
 @Component({
@@ -12,7 +13,8 @@ import { from } from 'rxjs';
   styleUrls: ['./order-details.component.css'],
 })
 export class OrderDetailsComponent implements OnInit {
-  batches: any;
+  batches: Batch[] = [];
+  checks: Check[] = [];
   order: Order;
   order_NR: string;
 
@@ -21,7 +23,8 @@ export class OrderDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private rollService: RollService,
     private batchService: BatchService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private controleService: ControleService
   ) {
     this.order = this.orderService.order;
     this.order_NR = '';
@@ -38,6 +41,9 @@ export class OrderDetailsComponent implements OnInit {
     }
     this.batchService.getBatches(this.order_NR).subscribe((data) => {
       this.batches = data;
+    });
+    this.controleService.getChecks('?order_NR='+this.order_NR).subscribe((data) => {
+      this.checks = data;
     });
   }
 

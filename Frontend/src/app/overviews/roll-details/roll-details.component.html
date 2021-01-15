@@ -30,18 +30,27 @@
           </div>
         </mat-tab>
         <mat-tab label="Controles">
-          <div *ngFor="let controle of controles">
+          <div *ngFor="let check of checks">
             <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{controle.controleType}}
+                  {{check.check_type}}
                 </mat-panel-title>
                 <mat-panel-description>
-                  Bijzonderheid: {{controle.controle}}
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <p>Beschrijving: {{controle.controleDesc}}</p>
-              <p>Medewerker: {{controle.uitgevoerdDoor}}</p>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>Beschrijving:</td>
+                    <td>{{check.check_remarks}}</td>
+                  </tr>
+                  <tr>
+                    <td>Medewerker:</td>
+                    <td>{{check.checked_by}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </mat-expansion-panel>
           </div>
         </mat-tab>

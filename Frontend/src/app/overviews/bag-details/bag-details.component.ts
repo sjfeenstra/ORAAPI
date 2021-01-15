@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { RollService, Roll } from '../../services/roll.service';
 import { BatchService, Batch } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
+import { ControleService, Check } from '../../services/controle.service';
 import {
   BagService,
   Bag,
@@ -21,6 +22,7 @@ export class BagDetailsComponent implements OnInit {
   errors: Error[] = [];
   missingPictures: MissingPictures[] = [];
   missingPills: MissingPills[] = [];
+  checks: Check[] = [];
   bag: Bag;
   controles: any;
   bag_NR: string;
@@ -33,7 +35,8 @@ export class BagDetailsComponent implements OnInit {
     private rollService: RollService,
     private batchService: BatchService,
     private orderService: OrderService,
-    private bagService: BagService
+    private bagService: BagService,
+    private controleService: ControleService
   ) {
     this.bag = bagService.bag;
     this.bag_NR = '';
@@ -56,6 +59,9 @@ export class BagDetailsComponent implements OnInit {
     });
     this.bagService.getMissingPills(this.bag_NR).subscribe((data) => {
       this.missingPills = data;
+    });
+    this.controleService.getChecks('?bag_NR='+this.bag_NR).subscribe((data) => {
+      this.checks = data;
     });
   }
 

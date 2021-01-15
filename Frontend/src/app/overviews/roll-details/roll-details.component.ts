@@ -5,6 +5,7 @@ import { RollService, Roll } from '../../services/roll.service';
 import { BatchService, Batch } from '../../services/batch.service';
 import { OrderService, Order } from '../../services/order.service';
 import { BagService, Bag } from '../../services/bag.service';
+import { ControleService, Check } from '../../services/controle.service';
 
 @Component({
   selector: 'app-roll-details',
@@ -13,6 +14,7 @@ import { BagService, Bag } from '../../services/bag.service';
 })
 export class RollDetailsComponent implements OnInit {
   bags: Bag[] = [];
+  checks: Check[] = [];
   roll: Roll;
   controles: any;
   roll_NR: string;
@@ -23,7 +25,8 @@ export class RollDetailsComponent implements OnInit {
     private rollService: RollService,
     private batchService: BatchService,
     private orderService: OrderService,
-    private bagService: BagService
+    private bagService: BagService,
+    private controleService: ControleService
   ) {
     this.roll = rollService.roll;
     this.roll_NR = '';
@@ -44,6 +47,9 @@ export class RollDetailsComponent implements OnInit {
     }
     this.bagService.getBags(this.roll_NR).subscribe((data) => {
       this.bags = data;
+    });
+    this.controleService.getChecks('?roll_NR='+this.roll_NR).subscribe((data) => {
+      this.checks = data;
     });
   }
 
