@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from API.models import Institute, Department, Order, Batch, BatchRow, PillsToBeAdded, OrderBatch, BatchChecks, Roll, \
-    Bag, MissingPictures, Error
+    Bag, MissingPictures, Error, Check
 
 
 class InstituteSerializer(serializers.ModelSerializer):
@@ -40,7 +40,7 @@ class BatchRowSerializer(serializers.ModelSerializer):
 class PillsToBeAddedSerializer(serializers.ModelSerializer):
     class Meta:
         model = PillsToBeAdded
-        fields = ['bag_NR','pil_ID', 'medication_name', 'free_text']
+        fields = ['bag_NR', 'pil_ID', 'medication_name', 'free_text']
 
 
 class OrderBatchSerializer(serializers.ModelSerializer):
@@ -83,4 +83,7 @@ class ErrorSerializer(serializers.ModelSerializer):
                   'checked_by']
 
 
-
+class CheckSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Check
+        fields = ['order_NR', 'batch_NR', 'roll_NR', 'bag_NR', 'check_type', 'checked_by', 'check_remarks']

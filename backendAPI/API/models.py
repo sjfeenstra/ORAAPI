@@ -156,3 +156,13 @@ class Error(models.Model):
     error_datetime = models.DateTimeField()
     corrected_by = models.CharField(max_length=NAME_LENGTH)
     checked_by = models.CharField(max_length=NAME_LENGTH)
+
+
+class Check(models.Model):
+    order_NR = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True)
+    batch_NR = models.ForeignKey(Batch, on_delete=models.CASCADE, blank=True, null=True)
+    roll_NR = models.ForeignKey(Roll, on_delete=models.CASCADE, blank=True, null=True)
+    bag_NR = models.ForeignKey(Bag, on_delete=models.CASCADE, blank=True, null=True)
+    check_type = models.CharField(max_length=NAME_LENGTH)
+    checked_by = models.CharField(max_length=NAME_LENGTH)
+    check_remarks = models.CharField(max_length=REMARK_LENGTH, blank=True, null=True)

@@ -16,6 +16,7 @@ router.register(r'roll', views.RollViewSet)
 router.register(r'bag', views.BagViewSet)
 router.register(r'missingpictures', views.MissingPicturesViewSet)
 router.register(r'error', views.ErrorViewSet)
+router.register(r'check', views.ChecksViewSet, basename='checks')
 
 urlpatterns = [
     path('', include(router.urls)),

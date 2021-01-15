@@ -108,6 +108,19 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='Check',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('order_NR', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='API.order', blank=True, null=True)),
+                ('batch_NR', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='API.batch', blank=True, null=True)),
+                ('roll_NR', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='API.roll', blank=True, null=True)),
+                ('bag_NR', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='API.bag', blank=True, null=True)),
+                ('check_type', models.CharField(max_length=40)),
+                ('checked_by', models.CharField(max_length=40)),
+                ('check_remarks', models.CharField(max_length=200, null=True, blank=True)),
+            ],
+        ),
+        migrations.CreateModel(
             name='Department',
             fields=[
                 ('department', models.CharField(max_length=40, primary_key=True, serialize=False)),
