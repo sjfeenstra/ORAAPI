@@ -2,6 +2,7 @@ from django.db import models
 
 NAME_LENGTH = 40
 REMARK_LENGTH = 200
+ORDER_NUMBER_LENGTH = 30
 BATCH_NUMBER_LENGTH = 30
 MACHINE_ID_LENGTH = 10
 
@@ -16,7 +17,7 @@ class Department(models.Model):
 
 
 class Order(models.Model):
-    order_NR = models.IntegerField(primary_key=True, )
+    order_NR = models.IntegerField(primary_key=True)
     institute = models.OneToOneField(Institute, on_delete=models.CASCADE)
     order_released = models.BooleanField()
 
