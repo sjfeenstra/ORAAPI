@@ -16,7 +16,7 @@ class Department(models.Model):
 
 
 class Order(models.Model):
-    order_NR = models.IntegerField()
+    order_NR = models.IntegerField(primary_key=True, )
     institute = models.OneToOneField(Institute, on_delete=models.CASCADE)
     order_released = models.BooleanField()
 
