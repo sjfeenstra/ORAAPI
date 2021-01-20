@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from "@angular/router/testing";
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -55,6 +57,8 @@ import { BagDetailsComponent } from './overviews/bag-details/bag-details.compone
     BrowserModule,
     CommonModule,
     AppRoutingModule,
+    RouterTestingModule,
+    RouterModule.forRoot([]),
     BrowserAnimationsModule,
     MatSelectModule,
     MatButtonModule,
