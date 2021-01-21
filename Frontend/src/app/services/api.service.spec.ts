@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { environment } from '../../environments/environment';
 
 import { ApiService } from './api.service';
 
@@ -12,5 +13,9 @@ describe('ApiService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('getApiUrl() returns the api-url', () => {
+    expect(service.getApiUrl()).toEqual('http://localhost:8000/api/');
   });
 });
