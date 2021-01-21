@@ -73,13 +73,13 @@ describe('ControleService', () => {
         check_remarks: '',
       },
     ];
-    service.getChecks('?order_NR=1').subscribe((checks) => {
+    service.getChecks('1').subscribe((checks) => {
       expect(checks[0].check_type).toEqual('Line');
       expect(checks[1].check_type).toEqual('Scheur');
     });
 
     const req = httpTestingController.expectOne(
-      'http://localhost:8000/api/check/?order_NR=1'
+      'http://localhost:8000/api/check/1'
     );
 
     expect(req.request.method).toEqual('GET');

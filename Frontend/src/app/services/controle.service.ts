@@ -27,9 +27,9 @@ export class ControleService {
     private apiService: ApiService
   ) {}
 
-  getChecks(optionalParameter: string = '') {
+  getChecks(bag_NR: string) {
     return this.http
-      .get(this.apiService.getApiUrl() + 'check/' + optionalParameter)
+      .get(this.apiService.getApiUrl() + 'check/' + bag_NR)
       .pipe(
         map((result) => {
           this.checks = result as Check[];
