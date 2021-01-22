@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,34 +25,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './user/login/login.component';
-import { LogoutComponent } from './user/logout/logout.component';
-import { OrderOverviewComponent } from './overviews/order-overview/order-overview.component';
-import { OrderDetailsComponent } from './overviews/order-details/order-details.component';
-import { BatchDetailsComponent } from './overviews/batch-details/batch-details.component';
-import { RollDetailsComponent } from './overviews/roll-details/roll-details.component';
-import { ControleLoggenComponent } from './controles/controle-loggen/controle-loggen.component';
 import { HomeComponent } from './home/home.component';
-import { VrijgifteComponent } from './controles/vrijgifte/vrijgifte.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { OverviewsModule } from './overviews/overviews.module';
+import { ControlesModule } from './controles/controles.module';
+import { UserModule } from './user/user.module';
 import { from } from 'rxjs';
-import { BagDetailsComponent } from './overviews/bag-details/bag-details.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    LoginComponent,
-    OrderOverviewComponent,
-    LogoutComponent,
-    OrderDetailsComponent,
-    BatchDetailsComponent,
-    RollDetailsComponent,
-    ControleLoggenComponent,
-    HomeComponent,
-    VrijgifteComponent,
-    BagDetailsComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, HomeComponent],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -60,24 +43,12 @@ import { BagDetailsComponent } from './overviews/bag-details/bag-details.compone
     RouterTestingModule,
     RouterModule.forRoot([]),
     BrowserAnimationsModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatSliderModule,
     MatSlideToggleModule,
-    MatListModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatExpansionModule,
-    FormsModule,
-    MatGridListModule,
-    MatTabsModule,
+    OverviewsModule,
+    ControlesModule,
+    UserModule,
   ],
-  exports: [MatInputModule],
+  exports: [AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
