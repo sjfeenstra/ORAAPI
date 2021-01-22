@@ -1,6 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from "@angular/router/testing";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
 
 import { VrijgifteComponent } from './vrijgifte.component';
 
@@ -11,7 +18,14 @@ describe('VrijgifteComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [VrijgifteComponent],
-      imports: [RouterTestingModule, HttpClientTestingModule]
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatListModule,
+        FormsModule,
+      ],
     }).compileComponents();
   });
 

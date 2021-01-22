@@ -28,17 +28,15 @@ export class ControleService {
   ) {}
 
   getChecks(bag_NR: string) {
-    return this.http
-      .get(this.apiService.getApiUrl() + 'check/' + bag_NR)
-      .pipe(
-        map((result) => {
-          this.checks = result as Check[];
-          return this.checks;
-        }),
-        catchError((err) => {
-          return of(err);
-        })
-      );
+    return this.http.get(this.apiService.getApiUrl() + 'check/' + bag_NR).pipe(
+      map((result) => {
+        this.checks = result as Check[];
+        return this.checks;
+      }),
+      catchError((err) => {
+        return of(err);
+      })
+    );
   }
   createCheck(check: Check) {
     return this.http.post(this.apiService.getApiUrl() + 'check/', check).pipe(
