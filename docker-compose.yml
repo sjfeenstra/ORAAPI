@@ -3,13 +3,15 @@ version: "3.9"
 services:
   db:
     image: mysql:8
+    command: mysqld --default-authentication-plugin=mysql_native_password
     ports:
       - '3306:3306'
     environment:
-       MYSQL_DATABASE: 'mydatabase'
-       MYSQL_USER: 'root'
+       MYSQL_DATABASE: 'db'
+       MYSQL_USER: 'user'
        MYSQL_PASSWORD: 'password'
        MYSQL_ROOT_PASSWORD: 'password'
+       
   web:
     build:
       context: backendAPI
@@ -20,6 +22,8 @@ services:
       - .:/backend
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
+      - db
+    links: 
       - db
       
   frontend:
