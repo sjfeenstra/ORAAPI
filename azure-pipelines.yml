@@ -1,6 +1,5 @@
 steps:
 - task: DockerCompose@0
-- task: DockerCompose@0
   displayName: Build docker images
   inputs:
     containerregistrytype: 'Container Registry'
