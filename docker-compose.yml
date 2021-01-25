@@ -1,23 +1,38 @@
-version: "3.9"
+version: "3"
    
 services:
+  db:
+    image: mysql:8
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_DATABASE='mydatabase'
+      - MYSQL_USER='root'
+      - MYSQL_PASSWORD='some_password'
+      - MYSQL_ROOT_PASSWORD='some_password'
+      - MYSQL_HOST=''
+    volumes:
+      - /tmp/backend/mysqld:/var/run/mysqld
+      - ./db:/var/lib/mysql
   backend:
     build:
       context: backendAPI
       dockerfile: Dockerfile
-    command: python manage.py migrate
-    command: python manage.py runserver
-    volumes:
-      - .:/backend
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
+    volumes:
+      - .:/backend
+      - /tmp/backend/mysqld:/run/mysqld
+    depends_on:
+      - db
       
   frontend:
     build:
       context: frontend
       dockerfile: Dockerfile
     volumes:
-      - '.:/app'
-      - '/app/node_modules'
+      - '.:/frontend'
+      - '/frontend/node_modules'
     ports:
       - '4200:4200'
