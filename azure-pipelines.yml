@@ -3,8 +3,6 @@ steps:
   displayName: Build docker images
   inputs:
     action: Run a Docker Compose command
-    azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
-    azureContainerRegistry: $(azureContainerRegistry)
     dockerComposeFile: docker-compose.yml 
     projectName: $(Build.Repository.Name)
     qualifyImageNames: true
@@ -13,8 +11,6 @@ steps:
   displayName: Run docker images
   inputs:
     action: Run a Docker Compose command
-    azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
-    azureContainerRegistry: $(azureContainerRegistry)
     dockerComposeFile: docker-compose.yml 
     projectName: $(Build.Repository.Name)
     qualifyImageNames: true
