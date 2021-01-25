@@ -5,7 +5,7 @@ steps:
     containerregistrytype: 'Container Registry'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'up'
+    dockerComposeCommand: 'build'
 - task: DockerCompose@0
   displayName: Run docker images
   inputs:
