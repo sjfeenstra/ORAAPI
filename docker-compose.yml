@@ -5,6 +5,8 @@ services:
     build:
       context: backendAPI
       dockerfile: Dockerfile
+    command: python manage.py migrate
+    command: python manage.py runserver
     volumes:
       - .:/backend
     ports:
