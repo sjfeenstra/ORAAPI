@@ -1,4 +1,5 @@
-
+pool:
+  name: Azure Pipelines
 steps:
 - task: DockerCompose@0
   displayName: Build docker images
